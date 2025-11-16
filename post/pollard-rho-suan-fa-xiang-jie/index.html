@@ -1,0 +1,573 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Pollard Rho 算法详解 - shundebo图书馆</title>
+<link rel="shortcut icon" href="https://blog.shundebo.top/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://blog.shundebo.top/media/css/tailwind.css">
+<link rel="stylesheet" href="https://blog.shundebo.top/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Pollard Rho 算法详解 - shundebo图书馆 - Atom Feed" href="https://blog.shundebo.top/atom.xml">
+
+    
+
+  <meta name="description" content="
+
+
+    
+    
+    Pollard Rho 算法详解
+    
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, &#34;Segoe..." />
+  <meta property="og:title" content="Pollard Rho 算法详解 - shundebo图书馆">
+  <meta property="og:description" content="
+
+
+    
+    
+    Pollard Rho 算法详解
+    
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, &#34;Segoe..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://blog.shundebo.top/post/pollard-rho-suan-fa-xiang-jie/" />
+  <meta property="og:image" content="https://blog.shundebo.top/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Pollard Rho 算法详解 - shundebo图书馆">
+  <meta name="twitter:description" content="
+
+
+    
+    
+    Pollard Rho 算法详解
+    
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, &#34;Segoe...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://blog.shundebo.top/post/pollard-rho-suan-fa-xiang-jie/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://blog.shundebo.top/media/css/prism-vs-light.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://blog.shundebo.top" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      shundebo图书馆
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Pollard Rho 算法详解
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2025-11-08 · 11 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollard Rho 算法详解</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 20px;
+            background: #fff;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1e40af;
+            border-left: 5px solid #3b82f6;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #1d4ed8;
+            margin-left: 10px;
+        }
+        pre {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        code {
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+        }
+        ul, ol {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        .note {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 12px 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .handnote {
+            background: #fef3c7;
+            border: 1px dashed #f59e0b;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+        .rho-svg {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .rho-svg svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .output {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-family: monospace;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            pre { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pollard Rho 算法详解</h1>
+        <p style="text-align: center; color: #64748b; font-size: 16px; margin-bottom: 30px;">
+            Pollard Rho 算法是一种用于分解合数的概率性算法，由 John Pollard 在 1975 年提出。它基于弗洛伊德循环查找算法，是分解中等大小整数（特别是那些有小质因子的数）的高效方法。
+        </p>
+<pre><code>    &lt;h2&gt;算法核心思想&lt;/h2&gt;
+    &lt;h3&gt;1. 基本思路&lt;/h3&gt;
+    &lt;p&gt;算法基于&lt;strong&gt;生日悖论&lt;/strong&gt;：在一组随机数中，找到两个数在模 &lt;code&gt;p&lt;/code&gt;（&lt;code&gt;n&lt;/code&gt; 的一个真因子）下同余的概率比我们想象的要高。&lt;/p&gt;
+
+    &lt;h3&gt;2. 核心原理&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;使用一个伪随机函数生成序列&lt;/li&gt;
+        &lt;li&gt;序列最终会进入循环（形状像希腊字母 &lt;strong&gt;ρ&lt;/strong&gt;，因此得名）&lt;/li&gt;
+        &lt;li&gt;在模 &lt;code&gt;p&lt;/code&gt; 下，序列进入循环的速度比在模 &lt;code&gt;n&lt;/code&gt; 下更快&lt;/li&gt;
+        &lt;li&gt;通过检测循环来找到因子&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;算法详细步骤&lt;/h2&gt;
+    &lt;h3&gt;数学原理&lt;/h3&gt;
+    &lt;p&gt;我们想要分解合数 &lt;code&gt;n&lt;/code&gt;。假设 &lt;code&gt;p&lt;/code&gt; 是 &lt;code&gt;n&lt;/code&gt; 的一个真因子（&lt;code&gt;p &amp;lt; n&lt;/code&gt;）。&lt;/p&gt;
+    &lt;ol&gt;
+        &lt;li&gt;选择伪随机函数：通常使用 &lt;code&gt;f(x) = (x² + c) mod n&lt;/code&gt;，其中 &lt;code&gt;c&lt;/code&gt; 是常数&lt;/li&gt;
+        &lt;li&gt;生成序列：&lt;code&gt;x₀, x₁, x₂, ...&lt;/code&gt; 其中 &lt;code&gt;xᵢ₊₁ = f(xᵢ)&lt;/code&gt;&lt;/li&gt;
+        &lt;li&gt;序列在模 &lt;code&gt;p&lt;/code&gt; 下会进入循环，因为值域有限&lt;/li&gt;
+        &lt;li&gt;使用 &lt;strong&gt;Floyd 循环检测法&lt;/strong&gt;：维护两个指针，一个慢指针（每次一步），一个快指针（每次两步）&lt;/li&gt;
+        &lt;li&gt;当 &lt;code&gt;gcd(|x - y|, n) ≠ 1&lt;/code&gt; 且 &lt;code&gt;≠ n&lt;/code&gt; 时，找到了一个因子&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;h2&gt;Python 实现&lt;/h2&gt;
+    &lt;h3&gt;基础版本&lt;/h3&gt;
+    &lt;pre&gt;&lt;code&gt;import math
+</code></pre>
+<p>import random</p>
+<p>def pollard_rho_basic(n, max_iterations=100000):<br>
+&quot;&quot;&quot;<br>
+Pollard Rho 算法基础版本<br>
+&quot;&quot;&quot;<br>
+if n == 1:<br>
+return None<br>
+if n % 2 == 0:<br>
+return 2</p>
+<pre><code># 伪随机函数 f(x) = (x^2 + c) mod n
+def f(x, c):
+    return (x * x + c) % n
+
+# 初始化
+x = random.randint(2, n-2)
+y = x
+c = random.randint(1, n-1)
+d = 1
+
+iterations = 0
+while d == 1 and iterations &lt; max_iterations:
+    # 慢指针走一步
+    x = f(x, c)
+    
+    # 快指针走两步
+    y = f(y, c)
+    y = f(y, c)
+    
+    # 计算 gcd
+    d = math.gcd(abs(x - y), n)
+    iterations += 1
+    
+    # 如果找到 n 本身，重新开始
+    if d == n:
+        return pollard_rho_basic(n, max_iterations)
+
+if d != 1 and d != n:
+    return d
+return None
+</code></pre>
+<h1 id="测试基础版本">测试基础版本</h1>
+<p>def test_basic():<br>
+n = 8051<br>
+factor = pollard_rho_basic(n)<br>
+if factor:<br>
+print(f&quot;Pollard Rho 找到 {n} 的因子: {factor}, 另一个因子: {n // factor}&quot;)<br>
+else:<br>
+print(f&quot;未能分解 {n}&quot;)</p>
+<p>test_basic()</p>
+<h1 id="输出-pollard-rho-找到-8051-的因子-97-另一个因子-83">输出: Pollard Rho 找到 8051 的因子: 97, 另一个因子: 83</h1>
+<p></code></pre><br>
+<div class="output"><br>
+Pollard Rho 找到 8051 的因子: 97, 另一个因子: 83<br>
+</div></p>
+<pre><code>    &lt;h2&gt;算法详细分析&lt;/h2&gt;
+    &lt;h3&gt;1. 为什么选择 &lt;code&gt;f(x) = x² + c&lt;/code&gt;？&lt;/h3&gt;
+    &lt;p&gt;这个函数具有很好的伪随机性质：&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;计算简单快速&lt;/li&gt;
+        &lt;li&gt;能产生足够复杂的序列&lt;/li&gt;
+        &lt;li&gt;在实践中表现良好&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;2. Floyd 循环检测法原理&lt;/h3&gt;
+    &lt;pre&gt;&lt;code&gt;def demonstrate_floyd_cycle():
+&quot;&quot;&quot;
+演示 Floyd 循环检测法
+&quot;&quot;&quot;
+# 模拟一个会进入循环的序列
+sequence = [2, 5, 26, 677, 7474, 2833, 8713, 1806, 8713, 1806, 8713, ...]
+
+# 慢指针和快指针
+slow = 0  # 索引
+fast = 0
+
+# 模拟 Floyd 算法
+while True:
+    slow += 1  # 慢指针走一步
+    fast += 2  # 快指针走两步
+    
+    if sequence[slow] == sequence[fast]:
+        print(f&quot;在位置 {slow} 和 {fast} 检测到循环&quot;)
+        break
+</code></pre>
+<h1 id="实际算法中我们不需要存储整个序列只需要计算-gcd">实际算法中，我们不需要存储整个序列，只需要计算 gcd</h1>
+<p></code></pre></p>
+<pre><code>    &lt;div class=&quot;rho-svg&quot;&gt;
+        &lt;h3&gt;ρ 形状示意图&lt;/h3&gt;
+        &lt;svg viewBox=&quot;0 0 300 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+            &lt;path d=&quot;M 50 100 Q 50 50 100 50 Q 150 50 150 100 Q 150 150 100 150 Q 50 150 50 100&quot; 
+                  fill=&quot;none&quot; stroke=&quot;#3b82f6&quot; stroke-width=&quot;4&quot;/&gt;
+            &lt;path d=&quot;M 150 100 L 220 100&quot; fill=&quot;none&quot; stroke=&quot;#3b82f6&quot; stroke-width=&quot;4&quot;/&gt;
+            &lt;circle cx=&quot;220&quot; cy=&quot;100&quot; r=&quot;40&quot; fill=&quot;none&quot; stroke=&quot;#3b82f6&quot; stroke-width=&quot;4&quot;/&gt;
+            &lt;text x=&quot;120&quot; y=&quot;45&quot; font-size=&quot;16&quot; fill=&quot;#475569&quot;&gt;尾部&lt;/text&gt;
+            &lt;text x=&quot;200&quot; y=&quot;95&quot; font-size=&quot;16&quot; fill=&quot;#475569&quot;&gt;环部&lt;/text&gt;
+            &lt;text x=&quot;20&quot; y=&quot;110&quot; font-size=&quot;14&quot; fill=&quot;#94a3b8&quot;&gt;slow: 1步&lt;/text&gt;
+            &lt;text x=&quot;230&quot; y=&quot;80&quot; font-size=&quot;14&quot; fill=&quot;#94a3b8&quot;&gt;fast: 2步&lt;/text&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;h3&gt;3. 时间复杂度&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;期望时间复杂度&lt;/strong&gt;：O(√p)，其中 p 是 n 的最小质因子&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;最坏情况&lt;/strong&gt;：O(√n)&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;空间复杂度&lt;/strong&gt;：O(1)，只需要常数空间&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;手写笔记重点解读&lt;/h2&gt;
+    &lt;div class=&quot;handnote&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;一、检测循环：&lt;/strong&gt;&lt;/p&gt;
+        &lt;p style=&quot;margin-left: 20px;&quot;&gt;slow 走1步&lt;br&gt;fast 走2步&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;二、关键数学原理：&lt;/strong&gt;&lt;/p&gt;
+        &lt;p style=&quot;margin-left: 20px;&quot;&gt;当龟兔相遇：&lt;br&gt;&lt;code&gt;xᵢ ≡ xⱼ (mod p)&lt;/code&gt;&lt;br&gt;⇒ &lt;code&gt;xᵢ - xⱼ ≡ 0 (mod p)&lt;/code&gt;&lt;br&gt;⇒ &lt;code&gt;p 整除 (xᵢ - xⱼ)&lt;/code&gt;&lt;/p&gt;
+        &lt;p style=&quot;margin-left: 20px;&quot;&gt;同时：&lt;br&gt;&lt;code&gt;xᵢ - xⱼ ≠ 0 (mod n)&lt;/code&gt;&lt;br&gt;因为 n 可能有其他质因子。&lt;/p&gt;
+        &lt;p style=&quot;margin-left: 20px;&quot;&gt;&lt;strong&gt;因此：&lt;/strong&gt;&lt;br&gt;&lt;code&gt;p 能整除 |xᵢ - xⱼ|&lt;/code&gt;&lt;br&gt;&lt;code&gt;n 不能整除&lt;/code&gt;&lt;br&gt;⇒ &lt;code&gt;gcd(|xᵢ - xⱼ|, n) ≥ p&lt;/code&gt;&lt;/p&gt;
+        &lt;p style=&quot;color: #dc2626; font-weight: bold; text-align: center; margin-top: 15px;&quot;&gt;如果这个 gcd 不是 1 也不是 n，那么它就是 n 的一个真因子！&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;© 2025 Pollard Rho 算法学习笔记 | 基于 OI Wiki 与经典教材整理&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&quot;https://oi-wiki.org/math/number-theory/factorization/&quot; style=&quot;color: #3b82f6;&quot;&gt;OI Wiki - 分解质因数&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+</body>
+</html>
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+        <div id="vlaine-comment"></div>
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  © shundebo 2025
+总访问量：<div align="center"><a href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3303371&c=9910426" alt="AmazingCounters.com"></a></div>
+<a href="https://icp.gov.moe/?keyword=20258222" target="_blank">萌ICP备20258222号</a><a href="https://icp.shundebo.top/id.php?keyword=88888888" target="_blank">🐧ICP备88888888号</a><a href="https://icp.xnet.ren/id.php?keyword=20256789" target="_blank">信ICP备20256789号</a><div class="github-badge">
+  <span class="badge-subject">雾备</span>
+  <a style="color:#fff" href="https://icp.wudu.ltd/id.php?keyword=12345678" rel="external nofollow" target="_blank">
+    <span class="badge-value bg-cai">12345678号</span>
+  </a>
+</div><a href="https://czicp.hnczy.xin/id.php?keyword=2025042001-1" target="_blank"> <img src="https://static.hnczy.icu/logo.png" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">初衷虚拟ICP备2025042001号-1</a><a href="https://icp.yuncheng.fun/id.php?keyword=88888888" target="_blank">小墨阳ICP备88888888号</a><a href="https://www.govs.cc/id.php?keyword=20251111" target="_blank"> <img src="https://thirdqq.qlogo.cn/g?b=qq&nk=3589326078&s=640" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">嘣ICP备20251111号</a><a href="https://icpx.top/icp.php?id=20256789" title="ICPX备案号20256789号">ICPX备20256789号</a><a href="https://icp.星.fun/id.php?keyword=20255555" target="_blank"> <img src="https://icp.星.fun/favicon.ico" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">梦ICP备20255555号</a>
+    
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E7%89%88%E6%9C%AC">测试基础版本</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA-pollard-rho-%E6%89%BE%E5%88%B0-8051-%E7%9A%84%E5%9B%A0%E5%AD%90-97-%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%9B%A0%E5%AD%90-83">输出: Pollard Rho 找到 8051 的因子: 97, 另一个因子: 83</a></li>
+<li><a href="#%E5%AE%9E%E9%99%85%E7%AE%97%E6%B3%95%E4%B8%AD%E6%88%91%E4%BB%AC%E4%B8%8D%E9%9C%80%E8%A6%81%E5%AD%98%E5%82%A8%E6%95%B4%E4%B8%AA%E5%BA%8F%E5%88%97%E5%8F%AA%E9%9C%80%E8%A6%81%E8%AE%A1%E7%AE%97-gcd">实际算法中，我们不需要存储整个序列，只需要计算 gcd</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://blog.shundebo.top/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://blog.shundebo.top/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+    <script type="application/javascript" src="https://unpkg.com/valine"></script>
+<script type="application/javascript">
+  new Valine({
+    el: '#vlaine-comment',
+    appId: 'CCk6FnLd6w7rsDUaBvhr4YRg-gzGzoHsz',
+    appKey: 'F5NA7cw4JgnC4aIQ9g8mclPn',
+    pageSize: 10,
+    notify: true,
+    avatar: 'mp',
+    verify: false,
+    placeholder: '评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论',
+    visitor: true,
+    highlight: true,
+    recordIP: true,
+  })
+</script>
+  
+  
+</body>
+
+</html>
