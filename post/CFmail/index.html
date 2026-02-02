@@ -1,0 +1,544 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo图书馆</title>
+<link rel="shortcut icon" href="https://blog.shundebo.top/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://blog.shundebo.top/media/css/tailwind.css">
+<link rel="stylesheet" href="https://blog.shundebo.top/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo图书馆 - Atom Feed" href="https://blog.shundebo.top/atom.xml">
+
+    
+
+  <meta name="description" content="
+
+
+1.注册Cloudflare账号并添加域名
+2.设置收邮件
+3.获取resendAPIkey与配置
+4.设置发件worker
+
+
+
+
+KImi的在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统..." />
+  <meta property="og:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo图书馆">
+  <meta property="og:description" content="
+
+
+1.注册Cloudflare账号并添加域名
+2.设置收邮件
+3.获取resendAPIkey与配置
+4.设置发件worker
+
+
+
+
+KImi的在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://blog.shundebo.top/post/CFmail/" />
+  <meta property="og:image" content="https://blog.shundebo.top/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo图书馆">
+  <meta name="twitter:description" content="
+
+
+1.注册Cloudflare账号并添加域名
+2.设置收邮件
+3.获取resendAPIkey与配置
+4.设置发件worker
+
+
+
+
+KImi的在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://blog.shundebo.top/post/CFmail/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://blog.shundebo.top/media/css/prism-vs-light.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://blog.shundebo.top" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      shundebo图书馆
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2025-03-02 · 7 min read</div>
+          
+            <a href="https://blog.shundebo.top/tag/tBIAaxyi8F/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              cloudflare
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#font-size61%E6%B3%A8%E5%86%8Ccloudflare%E8%B4%A6%E5%8F%B7%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8Dfont"><font size=6>1.注册Cloudflare账号并添加域名</font></a></li>
+<li><a href="#font-size62%E8%AE%BE%E7%BD%AE%E6%94%B6%E9%82%AE%E4%BB%B6font"><font size=6>2.设置收邮件</font></a></li>
+<li><a href="#font-size63%E8%8E%B7%E5%8F%96resendapikey%E4%B8%8E%E9%85%8D%E7%BD%AEfont"><font size=6>3.获取resendAPIkey与配置</font></a></li>
+<li><a href="#font-size64%E8%AE%BE%E7%BD%AE%E5%8F%91%E4%BB%B6workerfont"><font size=6>4.设置发件worker</font></a></li>
+</ul>
+</li>
+</ul>
+<br>
+KImi的<s>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br>
+企业邮箱的优势：<br>
+提升专业形象：使用企业邮箱（如yourname@yourdomain.com）可以让你在客户眼中显得更专业、更可信。<br>
+集中管理：方便团队协作，所有邮件都集中在一个域名下，便于分类和管理。<br>
+安全性更高：企业邮箱通常提供更高级的安全防护，保护你的商业机密。<br>
+传统企业邮箱的痛点：<br>
+成本高昂：大多数企业邮箱服务需要付费，对于预算有限的个人或初创团队来说是一笔不小的开支。<br>
+技术门槛高：搭建和维护企业邮箱需要一定的技术知识，对于非技术背景的用户来说难度较大。<br>
+Cloudflare简介：<br>
+Cloudflare是一家提供CDN（内容分发网络）、安全防护和DNS服务的公司。通过其全球分布的服务器网络，Cloudflare可以加速网站加载速度、保护网站免受攻击，并提供免费的SSL证书。<br>
+Cloudflare的免费功能：<br>
+免费DNS解析：可以将域名解析到任意服务器。<br>
+免费SSL证书：确保网站通信的安全。<br>
+强大的安全防护：防止DDoS攻击、恶意爬虫等。<br>
+Cloudflare在企业邮箱搭建中的作用：<br>
+通过Cloudflare的DNS解析功能，我们可以将域名绑定到第三方邮箱服务，从而实现免费企业邮箱的搭建。</s></p>
+<h2 id="font-size61注册cloudflare账号并添加域名font"><font size=6>1.注册Cloudflare账号并添加域名</font></h2>
+<p>这里不过多赘述，网上教程很多。</p>
+<h2 id="font-size62设置收邮件font"><font size=6>2.设置收邮件</font></h2>
+<p>在dashboard打开域名控制台，并选择电子邮件进行如下操作<br>
+<img src="https://blog.shundebo.top/post-images/1740887496920.png" alt="" loading="lazy"><br>
+这里什么都不填，直接点这里：<br>
+<img src="https://blog.shundebo.top/post-images/1740887592731.png" alt="" loading="lazy"><br>
+<img src="https://blog.shundebo.top/post-images/1740887689272.png" alt="" loading="lazy"><br>
+<img src="https://blog.shundebo.top/post-images/1740887751766.png" alt="" loading="lazy"><br>
+<img src="https://blog.shundebo.top/post-images/1740887858131.png" alt="" loading="lazy"></p>
+<h2 id="font-size63获取resendapikey与配置font"><font size=6>3.获取resendAPIkey与配置</font></h2>
+<p>进到resend.com注册后这样操作<br>
+<img src="https://blog.shundebo.top/post-images/1740888648115.png" alt="" loading="lazy"><br>
+这里填入你的域名再点add<br>
+再按照他的设置配置好cloudflare的dns，网上也有很多教程<br>
+<img src="https://blog.shundebo.top/post-images/1740888835647.png" alt="" loading="lazy"><br>
+配置好后点击上面的verify就行了<br>
+然后点击api-key，生成后保存好<br>
+<img src="https://blog.shundebo.top/post-images/1740888973508.png" alt="" loading="lazy"></p>
+<h2 id="font-size64设置发件workerfont"><font size=6>4.设置发件worker</font></h2>
+<p>回到dashboard<br>
+<img src="https://blog.shundebo.top/post-images/1740888137422.png" alt="" loading="lazy"><br>
+<img src="https://blog.shundebo.top/post-images/1740888144994.png" alt="" loading="lazy"><br>
+现在左侧会有一个代码框<br>
+删除原来的并把此代码填入：</p>
+<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request));
+})
+
+async function handleRequest(request) {
+  if (request.method === 'POST') {
+      const { senderName, username, to, subject, html } = await request.json();
+
+      // 固定的 API 密钥
+      const apiKey = '&lt;你的密钥&gt;';
+      
+      // 构建发件人邮箱
+      const fromEmail = `${username}@&lt;你的域名&gt;`;
+
+      const requestBody = {
+          from: `${senderName} &lt;${fromEmail}&gt;`, // 设置显示的发件人名称
+          to: [to],
+          subject: subject,
+          html: html
+      };
+
+      const response = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${apiKey}`,
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestBody)
+      });
+
+      const data = await response.json();
+      if (data.success) {
+          return new Response(JSON.stringify({ message: '邮件发送成功!' }), { status: 200 });
+      } else {
+          return new Response(JSON.stringify({ error: `邮件发送失败: ${data.error}` }), { status: 400 });
+      }
+  } else {
+      // 返回 HTML 表单页面
+      return new Response(`
+          &lt;!DOCTYPE html&gt;
+          &lt;html lang=&quot;en&quot;&gt;
+          &lt;head&gt;
+              &lt;meta charset=&quot;UTF-8&quot;&gt;
+              &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+              &lt;title&gt;Send Email via Resend API&lt;/title&gt;
+              &lt;style&gt;
+                  body { font-family: 'Arial', sans-serif; background-color: #f4f7fc; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+                  .container { background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 400px; padding: 30px; }
+                  h1 { text-align: center; color: #333; font-size: 24px; margin-bottom: 20px; }
+                  label { display: block; font-size: 14px; margin-bottom: 6px; color: #555; }
+                  input[type=&quot;email&quot;], input[type=&quot;text&quot;], textarea { width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; color: #333; }
+                  textarea { height: 120px; resize: vertical; }
+                  button { width: 100%; padding: 12px; background-color: #5c6bc0; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+                  button:hover { background-color: #3f4a90; }
+                  .success-message, .error-message { text-align: center; font-weight: bold; margin-top: 20px; }
+                  .success-message { color: #4caf50; }
+                  .error-message { color: #f44336; }
+                  .form-group { margin-bottom: 16px; }
+              &lt;/style&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+              &lt;div class=&quot;container&quot;&gt;
+                  &lt;h1&gt;发送邮件&lt;/h1&gt;
+                  &lt;form id=&quot;emailForm&quot;&gt;
+                      &lt;div class=&quot;form-group&quot;&gt;
+                          &lt;label for=&quot;senderName&quot;&gt;发件人名称：&lt;/label&gt;
+                          &lt;input type=&quot;text&quot; id=&quot;senderName&quot; required&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;form-group&quot;&gt;
+                          &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
+                          &lt;input type=&quot;text&quot; id=&quot;username&quot; required&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;form-group&quot;&gt;
+                          &lt;label for=&quot;toEmail&quot;&gt;收件人邮箱：&lt;/label&gt;
+                          &lt;input type=&quot;email&quot; id=&quot;toEmail&quot; required&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;form-group&quot;&gt;
+                          &lt;label for=&quot;subject&quot;&gt;主题：&lt;/label&gt;
+                          &lt;input type=&quot;text&quot; id=&quot;subject&quot; required&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;form-group&quot;&gt;
+                          &lt;label for=&quot;htmlContent&quot;&gt;内容：&lt;/label&gt;
+                          &lt;textarea id=&quot;htmlContent&quot; required&gt;&lt;/textarea&gt;
+                      &lt;/div&gt;
+                      &lt;button type=&quot;submit&quot;&gt;发送邮件&lt;/button&gt;
+                  &lt;/form&gt;
+                  &lt;div id=&quot;message&quot;&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;script&gt;
+                  document.getElementById('emailForm').addEventListener('submit', async function(event) {
+                      event.preventDefault();
+                      const senderName = document.getElementById('senderName').value;
+                      const username = document.getElementById('username').value;
+                      const toEmail = document.getElementById('toEmail').value;
+                      const subject = document.getElementById('subject').value;
+                      const htmlContent = document.getElementById('htmlContent').value;
+
+                      const response = await fetch('/', {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify({ senderName, username, to: toEmail, subject, html: htmlContent })
+                      });
+
+                      const data = await response.json();
+                      const messageDiv = document.getElementById('message');
+                      if (response.ok) {
+                          messageDiv.innerHTML = '&lt;div class=&quot;success-message&quot;&gt;' + data.message + '&lt;/div&gt;';
+                      } else {
+                          messageDiv.innerHTML = '&lt;div class=&quot;error-message&quot;&gt;' + data.error + '&lt;/div&gt;';
+                      }
+                  });
+              &lt;/script&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;
+      `, { headers: { &quot;Content-Type&quot;: &quot;text/html&quot; } });
+  }
+}
+
+</code></pre>
+<p>紧接着修改一下11行和13行的apikey和域名，点击部署<br>
+<s>这个可能有泄露风险<br>
+欢迎大佬指点</s><br>
+点击访问<br>
+发送后错误信息如果是undefine就算成功了！！！<br>
+完成<img src="https://blog.shundebo.top/post-images/1740891446056.png" alt="" loading="lazy"></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+        <div id="vlaine-comment"></div>
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  © shundebo 2025
+总访问量：<div align="center"><a href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3303371&c=9910426" alt="AmazingCounters.com"></a></div>
+<a href="https://icp.gov.moe/?keyword=20258222" target="_blank">萌ICP备20258222号</a><a href="https://icp.shundebo.top/id.php?keyword=88888888" target="_blank">🐧ICP备88888888号</a><a href="https://icp.xnet.ren/id.php?keyword=20256789" target="_blank">信ICP备20256789号</a><div class="github-badge">
+  <span class="badge-subject">雾备</span>
+  <a style="color:#fff" href="https://icp.wudu.ltd/id.php?keyword=12345678" rel="external nofollow" target="_blank">
+    <span class="badge-value bg-cai">12345678号</span>
+  </a>
+</div><a href="https://czicp.hnczy.xin/id.php?keyword=2025042001-1" target="_blank"> <img src="https://static.hnczy.icu/logo.png" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">初衷虚拟ICP备2025042001号-1</a><a href="https://icp.yuncheng.fun/id.php?keyword=88888888" target="_blank">小墨阳ICP备88888888号</a><a href="https://www.govs.cc/id.php?keyword=20251111" target="_blank"> <img src="https://thirdqq.qlogo.cn/g?b=qq&nk=3589326078&s=640" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">嘣ICP备20251111号</a><a href="https://icpx.top/icp.php?id=20256789" title="ICPX备案号20256789号">ICPX备20256789号</a><a href="https://icp.星.fun/id.php?keyword=20255555" target="_blank"> <img src="https://icp.星.fun/favicon.ico" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">梦ICP备20255555号</a>
+    
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#font-size61%E6%B3%A8%E5%86%8Ccloudflare%E8%B4%A6%E5%8F%B7%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8Dfont"><font size=6>1.注册Cloudflare账号并添加域名</font></a></li>
+<li><a href="#font-size62%E8%AE%BE%E7%BD%AE%E6%94%B6%E9%82%AE%E4%BB%B6font"><font size=6>2.设置收邮件</font></a></li>
+<li><a href="#font-size63%E8%8E%B7%E5%8F%96resendapikey%E4%B8%8E%E9%85%8D%E7%BD%AEfont"><font size=6>3.获取resendAPIkey与配置</font></a></li>
+<li><a href="#font-size64%E8%AE%BE%E7%BD%AE%E5%8F%91%E4%BB%B6workerfont"><font size=6>4.设置发件worker</font></a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://blog.shundebo.top/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://blog.shundebo.top/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+    <script type="application/javascript" src="https://unpkg.com/valine"></script>
+<script type="application/javascript">
+  new Valine({
+    el: '#vlaine-comment',
+    appId: 'CCk6FnLd6w7rsDUaBvhr4YRg-gzGzoHsz',
+    appKey: 'F5NA7cw4JgnC4aIQ9g8mclPn',
+    pageSize: 10,
+    notify: true,
+    avatar: 'mp',
+    verify: false,
+    placeholder: '评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论',
+    visitor: true,
+    highlight: true,
+    recordIP: true,
+  })
+</script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: 'Ov23lirVYELnwGtSLIFf',
+    clientSecret: 'd75706a140f5053b9daa4bd2f3884b5d2188f606',
+    repo: 'blog-shundebo-top',
+    owner: 'shundebo',
+    admin: ['shundebo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>
