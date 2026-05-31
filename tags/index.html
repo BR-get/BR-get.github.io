@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title></title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780197890">
+<link rel="shortcut icon" href="/favicon.ico?v=1780199426">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title=" - Atom Feed" href="/atom.xml">
@@ -91,29 +91,37 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780197890" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780199426" alt="">
     </a>
-    <h1 class="site-title">
-        shundebo的图书馆
-    </h1>
-    <p class="site-description">
-        图书馆
-    </p>
+    <h1 class="site-title">shundebo的图书馆</h1>
+    <p class="site-description">图书馆</p>
+    
     <div class="social-container">
         
-        <a href="https://github.com/shundebo" target="_blank">
-            <i class="ri-github-line"></i>
-        </a>
+        <span class="social-label">炸死我</span>
         
         
-        <a href="https://x.com/shundebo__" target="_blank">
-            <i class="ri-twitter-line"></i>
-        </a>
+        
+        <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon"><i class="ri-mail-line"></i></a>
+        
+        
+        <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
+        
+        
+        <a href="https://x.com/shundebo__" target="_blank" class="social-icon"><i class="ri-twitter-line"></i></a>
+        
+        
+        
+        
+        
+        <a href="https://t.me/aziwaninndroichi" target="_blank" class="social-icon"><i class="ri-telegram-line"></i></a>
+        
         
         
         
         
     </div>
+    
 </div>
 
 <script>
@@ -138,6 +146,31 @@ function toggleMenu(){
 if(document.documentElement.classList.contains('dark')){
   document.getElementById('darkBtn').innerHTML='<i class="ri-sun-line"></i>';
 }
+
+
+(function(){
+  if('ontouchstart' in window||navigator.maxTouchPoints>0)return;
+  var d=document.createElement('div');d.id='cursor-dot';
+  var r=document.createElement('div');r.id='cursor-ring';
+  document.body.appendChild(d);document.body.appendChild(r);
+  var mx=0,my=0,rx=0,ry=0,vis=false;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    d.style.left=mx+'px';d.style.top=my+'px';
+    if(!vis){vis=true;rx=mx;ry=my;r.style.left=rx+'px';r.style.top=ry+'px';d.classList.remove('hide');r.classList.remove('hide');}
+  });
+  !function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(anim)}();
+  document.addEventListener('mouseleave',function(){d.classList.add('hide');r.classList.add('hide');vis=false;});
+  document.addEventListener('mouseenter',function(){d.classList.remove('hide');r.classList.remove('hide');});
+  document.addEventListener('mouseover',function(e){
+    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if(t){d.classList.add('hover');r.classList.add('hover');}
+  });
+  document.addEventListener('mouseout',function(e){
+    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if(t){d.classList.remove('hover');r.classList.remove('hover');}
+  });
+})();
 </script>
 
             <div class="tags-container">
@@ -159,6 +192,7 @@ if(document.documentElement.classList.contains('dark')){
 
         </div>
     </div>
+    <script src="/media/scripts/main.js"></script>
 <script>console.log("\n%c ✦ Gridea Pro v1.2.1 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>

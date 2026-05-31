@@ -55,20 +55,6 @@ img { max-width: 100%; height: auto; }
   padding: 0 16px 24px; font-weight: 400;
   line-height: 1.6;
 }
-.site-header .menu-container {
-  display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 4px; padding-bottom: 16px;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 16px;
-}
-.site-header .menu-container a.menu {
-  font-size: 14px; padding: 6px 16px;
-  font-weight: 500; color: #666;
-  border-radius: 20px; transition: all .15s;
-}
-.site-header .menu-container a.menu:hover {
-  background: #f0f0f0; color: #111;
-}
 .site-header .social-container {
   padding-bottom: 32px; font-size: 18px;
 }
@@ -327,6 +313,152 @@ img { max-width: 100%; height: auto; }
 .memo-tag { color: #999; }
 .memo-tag:hover { color: #667eea; }
 
+/* ===== Cursor Effects ===== */
+#cursor-dot {
+  position:fixed; pointer-events:none; z-index:99999;
+  width:8px; height:8px; background:#667eea;
+  border-radius:50%; transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s;
+}
+#cursor-dot.hover { width:12px; height:12px; background:#a5b4fc; }
+#cursor-dot.hide { opacity:0; }
+#cursor-ring {
+  position:fixed; pointer-events:none; z-index:99998;
+  width:36px; height:36px; border:2px solid #667eea;
+  border-radius:50%; transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,border-color .15s;
+}
+#cursor-ring.hover { width:48px; height:48px; border-color:#a5b4fc; }
+#cursor-ring.hide { opacity:0; }
+html.dark #cursor-dot { background:#a5b4fc; }
+html.dark #cursor-ring { border-color:#a5b4fc; }
+
+/* ===== Share ===== */
+.share-section { display:flex; align-items:center; gap:8px; padding:20px 0; border-top:1px solid #f0f0f0; margin-top:8px; }
+.share-label { font-size:14px; color:#bbb; display:flex; align-items:center; gap:4px; }
+.share-btn { width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; cursor:pointer; font-size:17px; transition:all .15s; }
+.share-twitter { color:#3b82f6; } .share-twitter:hover { background:#eff6ff; }
+.share-weibo { color:#ef4444; } .share-weibo:hover { background:#fef2f2; }
+.share-telegram { color:#06b6d4; } .share-telegram:hover { background:#ecfeff; }
+.share-link { color:#6b7280; } .share-link:hover { background:#f3f4f6; }
+
+/* ===== Back to Top ===== */
+.back-to-top {
+  position:fixed; right:20px; bottom:20px; z-index:100;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#fff; color:#374151; cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.1); border:1px solid #eee;
+  font-size:15px; transition:all .2s;
+}
+.back-to-top:hover { box-shadow:0 4px 16px rgba(0,0,0,.15); transform:translateY(-2px); }
+html.dark .back-to-top { background:#374151; color:#d1d5db; border-color:#4b5563; }
+
+/* ===== Code block: copy btn ===== */
+.post-content pre { position:relative; }
+.post-content pre .copy-btn {
+  position:absolute; top:8px; right:8px; z-index:2;
+  padding:6px; background:rgba(255,255,255,.08); border:none; border-radius:6px;
+  color:#94a3b8; cursor:pointer; font-size:16px; line-height:1; opacity:0;
+  transition:all .15s; display:flex;
+}
+.post-content pre:hover .copy-btn { opacity:1; }
+.post-content pre .copy-btn:hover { background:rgba(255,255,255,.15); color:#e2e8f0; }
+
+/* ===== Code block: lang tag ===== */
+.post-content pre .lang-tag {
+  position:absolute; top:0; right:0; z-index:1;
+  padding:4px 12px; font-size:12px; color:#94a3b8;
+  background:rgba(0,0,0,.2); border-bottom-left-radius:6px;
+  font-family:Menlo,Monaco,Consolas,monospace;
+}
+
+/* ===== Code block: line numbers ===== */
+.post-content pre .line-numbers {
+  position:absolute; top:0; left:0; z-index:1;
+  padding:1.2em 8px; text-align:right; color:#475569;
+  user-select:none; font-size:.9em; line-height:1.6;
+  font-family:Menlo,Monaco,Consolas,monospace;
+  background:rgba(0,0,0,.1); min-width:2.5em; border-radius:8px 0 0 8px;
+}
+.post-content pre .line-numbers span { display:block; }
+.post-content pre.has-line-numbers code { padding-left:3.5em; }
+
+/* ===== macOS dots ===== */
+.post-content pre::before {
+  content:''; position:absolute; top:14px; left:16px; z-index:2;
+  width:10px; height:10px; border-radius:50%;
+  background:#ff5f57; box-shadow:18px 0 #ffbd2e, 36px 0 #28c840;
+}
+.post-content pre code { padding-top:36px !important; }
+.post-content pre .copy-btn { top:30px; }
+
+/* ===== Heading anchors ===== */
+.heading-anchor {
+  float:left; margin-left:-1.2em; padding-right:.25em;
+  color:#d1d5db; font-weight:400; opacity:0;
+  transition:opacity .15s; text-decoration:none; border-bottom:none!important;
+  font-size:.85em;
+}
+.post-content h2:hover .heading-anchor,
+.post-content h3:hover .heading-anchor,
+.post-content h4:hover .heading-anchor { opacity:1; }
+.heading-anchor:hover { color:#667eea!important; }
+html.dark .heading-anchor { color:#4b5563; }
+
+/* ===== Sticky badge ===== */
+.sticky-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:13px; font-weight:600; color:#b45309;
+  background:#fffbeb; padding:3px 10px; border-radius:9999px; margin-bottom:10px;
+}
+.sticky-badge i { color:#fbbf24; font-size:12px; }
+
+/* ===== Read more ===== */
+.read-more {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:14px; font-weight:500; color:#667eea; margin-top:8px;
+  transition:all .2s;
+}
+.read-more i { transition:transform .2s; }
+.read-more:hover i { transform:translateX(4px); }
+
+/* ===== Social icons in header ===== */
+.social-icon {
+  position:relative; display:inline-block; margin:0 5px;
+  color:#aaa; font-size:18px; transition:all .2s; vertical-align:middle;
+}
+.social-icon:hover { color:#667eea; transform:translateY(-2px); }
+.social-icon.wechat img {
+  position:absolute; left:50%; transform:translateX(-50%); width:160px;
+  top:100%; padding-top:8px; z-index:50; display:none;
+  border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,.15);
+}
+.social-icon.wechat:hover img { display:block; }
+.social-label { font-size:13px; color:#bbb; margin-right:6px; vertical-align:middle; }
+html.dark .social-icon { color:#6b7280; }
+html.dark .social-icon:hover { color:#a5b4fc; }
+
+/* ===== 🐟 MEOW 彩蛋 ===== */
+.meow-fish {
+  position:fixed; bottom:0; z-index:99997; pointer-events:none;
+  animation:fishFloat 5s ease-in forwards;
+}
+@keyframes fishFloat {
+  0% { transform:translateY(0) scale(.5); opacity:1; }
+  50% { opacity:1; }
+  100% { transform:translateY(-100vh) scale(1.2); opacity:0; }
+}
+.meow-toast {
+  position:fixed; bottom:32px; left:50%; z-index:99996;
+  transform:translateX(-50%) translateY(20px);
+  background:#1f2937; color:#f9fafb; padding:12px 24px;
+  border-radius:9999px; font-size:14px; opacity:0;
+  transition:all .3s; box-shadow:0 4px 16px rgba(0,0,0,.2);
+  white-space:nowrap;
+}
+.meow-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
 /* ===== hljs ===== */
 .hljs { display: block; overflow-x: auto; padding: .5em; background: #f8f9fa; color: #333; }
 .hljs-comment, .hljs-quote { color: #998; font-style: italic; }
@@ -428,9 +560,6 @@ html.dark a:hover { color: #a5b4fc; }
 html.dark .main { background: rgba(31,41,55,.75); }
 html.dark .site-header .site-title { color: #f3f4f6; }
 html.dark .site-header .site-description { color: #9ca3af; }
-html.dark .site-header .menu-container { border-bottom-color: #2d2d2d; }
-html.dark .site-header .menu-container a.menu { color: #9ca3af; }
-html.dark .site-header .menu-container a.menu:hover { background: #374151; color: #fff; }
 html.dark .site-header .social-container a { color: #6b7280; }
 html.dark .site-header .social-container a:hover { color: #a5b4fc; }
 html.dark .top-nav-link { color: #d1d5db; }
@@ -446,6 +575,14 @@ html.dark .post-card .post-title a:hover { color: #a5b4fc; }
 html.dark .post-card .post-info { color: #6b7280; }
 html.dark .post-card .post-info > span { color: #6b7280; }
 html.dark .post-card .post-abstract { color: #d1d5db; }
+html.dark .sticky-badge { background:rgba(120,53,15,.3); color:#fde68a; }
+html.dark .read-more { color:#a5b4fc; }
+html.dark .pswp__bg { background:#111; }
+html.dark .share-section { border-top-color: #2d2d2d; }
+html.dark .share-twitter:hover { background:#1e3a5f; }
+html.dark .share-weibo:hover { background:#5c1a1a; }
+html.dark .share-telegram:hover { background:#164e63; }
+html.dark .share-link:hover { background:#374151; }
 html.dark .post-detail .post .post-title { color: #f3f4f6; }
 html.dark .post-detail .post .post-info { border-bottom-color: #2d2d2d; }
 html.dark .post-detail .post .post-content p { color: #d1d5db; }

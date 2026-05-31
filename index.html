@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title></title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780197890">
+<link rel="shortcut icon" href="/favicon.ico?v=1780199426">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title=" - Atom Feed" href="/atom.xml">
@@ -91,29 +91,37 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780197890" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780199426" alt="">
     </a>
-    <h1 class="site-title">
-        shundebo的图书馆
-    </h1>
-    <p class="site-description">
-        图书馆
-    </p>
+    <h1 class="site-title">shundebo的图书馆</h1>
+    <p class="site-description">图书馆</p>
+    
     <div class="social-container">
         
-        <a href="https://github.com/shundebo" target="_blank">
-            <i class="ri-github-line"></i>
-        </a>
+        <span class="social-label">炸死我</span>
         
         
-        <a href="https://x.com/shundebo__" target="_blank">
-            <i class="ri-twitter-line"></i>
-        </a>
+        
+        <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon"><i class="ri-mail-line"></i></a>
+        
+        
+        <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
+        
+        
+        <a href="https://x.com/shundebo__" target="_blank" class="social-icon"><i class="ri-twitter-line"></i></a>
+        
+        
+        
+        
+        
+        <a href="https://t.me/aziwaninndroichi" target="_blank" class="social-icon"><i class="ri-telegram-line"></i></a>
+        
         
         
         
         
     </div>
+    
 </div>
 
 <script>
@@ -138,27 +146,50 @@ function toggleMenu(){
 if(document.documentElement.classList.contains('dark')){
   document.getElementById('darkBtn').innerHTML='<i class="ri-sun-line"></i>';
 }
+
+
+(function(){
+  if('ontouchstart' in window||navigator.maxTouchPoints>0)return;
+  var d=document.createElement('div');d.id='cursor-dot';
+  var r=document.createElement('div');r.id='cursor-ring';
+  document.body.appendChild(d);document.body.appendChild(r);
+  var mx=0,my=0,rx=0,ry=0,vis=false;
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    d.style.left=mx+'px';d.style.top=my+'px';
+    if(!vis){vis=true;rx=mx;ry=my;r.style.left=rx+'px';r.style.top=ry+'px';d.classList.remove('hide');r.classList.remove('hide');}
+  });
+  !function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(anim)}();
+  document.addEventListener('mouseleave',function(){d.classList.add('hide');r.classList.add('hide');vis=false;});
+  document.addEventListener('mouseenter',function(){d.classList.remove('hide');r.classList.remove('hide');});
+  document.addEventListener('mouseover',function(e){
+    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if(t){d.classList.add('hover');r.classList.add('hover');}
+  });
+  document.addEventListener('mouseout',function(e){
+    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if(t){d.classList.remove('hover');r.classList.remove('hover');}
+  });
+})();
 </script>
 
             
 <div class="post-container">
     
     <article class="post-card animated fadeInUp">
+        
+        <span class="sticky-badge"><i class="ri-star-fill"></i> 置顶</span>
+        
         <a href="/post/about/">
             <h2 class="post-title">about</h2>
         </a>
         <div class="post-info">
-            <span>
-                2025-03-08
-            </span>
-            <span>
-                1 分钟阅读
-            </span>
+            <span>2025-03-08</span>
+            <span>1 分钟阅读</span>
             
         </div>
         
-        <div class="post-abstract">
-            <h1 id="heading">关于我</h1>
+        <div class="post-abstract"><h1 id="heading">关于我</h1>
 <p>我是shundebo</p>
 <h2 id="heading-1">技能</h2>
 <ul>
@@ -170,26 +201,25 @@ if(document.documentElement.classList.contains('dark')){
 <ul>
 <li><strong><!-- raw HTML omitted -->JVAV<!-- raw HTML omitted --></strong>：抄的&hellip;</li>
 </ul>
-
-        </div>
+</div>
+        <a href="/post/about/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
     <article class="post-card animated fadeInUp">
+        
         <a href="/post/zhe-shi-jing-bu-liao-xin-xia-lai-xie-dong-xi-de-ben-lai-jiu-ji-zhong-bu-liao-zhu-yi-li-na-xie-sha-suo-yi/">
             <h2 class="post-title">这是静不了心下来写东西的本来就集中不了注意力那写啥所以</h2>
         </a>
         <div class="post-info">
-            <span>
-                2026-05-24
-            </span>
-            <span>
-                1 分钟阅读
-            </span>
+            <span>2026-05-24</span>
+            <span>1 分钟阅读</span>
             
         </div>
         
-        <div class="post-abstract">
-            <p>啊啊啊啊好無聊喵<!-- raw HTML omitted --><br />
+        <div class="post-abstract"><p>啊啊啊啊好無聊喵<!-- raw HTML omitted --><br />
 死掉了啊啊啊啊好無聊喵<!-- raw HTML omitted --><br />
 死掉了啊啊啊啊好無聊喵<!-- raw HTML omitted --><br />
 死掉了啊啊啊啊好無聊喵<!-- raw HTML omitted --><br />
@@ -197,45 +227,43 @@ if(document.documentElement.classList.contains('dark')){
 死掉了反正</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-
-        </div>
+</div>
+        <a href="/post/zhe-shi-jing-bu-liao-xin-xia-lai-xie-dong-xi-de-ben-lai-jiu-ji-zhong-bu-liao-zhu-yi-li-na-xie-sha-suo-yi/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
     <article class="post-card animated fadeInUp">
+        
         <a href="/post/lai-wan-fu-wu-qi-miao/">
             <h2 class="post-title">来玩服务器喵</h2>
         </a>
         <div class="post-info">
-            <span>
-                2026-05-24
-            </span>
-            <span>
-                1 分钟阅读
-            </span>
+            <span>2026-05-24</span>
+            <span>1 分钟阅读</span>
             
         </div>
         
-        <div class="post-abstract">
-            
-        </div>
+        <div class="post-abstract"></div>
+        <a href="/post/lai-wan-fu-wu-qi-miao/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
     <article class="post-card animated fadeInUp">
+        
         <a href="/post/jvav-bian-cheng-yu-yan-jie-shao/">
             <h2 class="post-title">JVAV 编程语言介绍 🐣</h2>
         </a>
         <div class="post-info">
-            <span>
-                2026-04-06
-            </span>
-            <span>
-                1 分钟阅读
-            </span>
+            <span>2026-04-06</span>
+            <span>1 分钟阅读</span>
             
         </div>
         
-        <div class="post-abstract">
-            <h1 id="jvav--">JVAV 编程语言介绍 🐣</h1>
+        <div class="post-abstract"><h1 id="jvav--">JVAV 编程语言介绍 🐣</h1>
 <p><strong>JVAV</strong> 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。</p>
 <h2 id="heading">语言特性</h2>
 <ul>
@@ -244,59 +272,58 @@ if(document.documentElement.classList.contains('dark')){
 <li><strong>完整递归支持</strong> - 支持 factorial、fibonacci 等递归算法</li>
 <li><strong>多行代码块</strong> &hellip;</li>
 </ul>
-
-        </div>
+</div>
+        <a href="/post/jvav-bian-cheng-yu-yan-jie-shao/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
     <article class="post-card animated fadeInUp">
+        
         <a href="/post/agp-v202510/">
             <h2 class="post-title">AGP V2025.10</h2>
         </a>
         <div class="post-info">
-            <span>
-                2025-10-06
-            </span>
-            <span>
-                21 分钟阅读
-            </span>
+            <span>2025-10-06</span>
+            <span>21 分钟阅读</span>
             
         </div>
         
-        <div class="post-abstract">
-            <p>适用于<br />
+        <div class="post-abstract"><p>适用于<br />
 Grok 4 Fast Beta<br />
 Gemini 2.5 Flash<br />
 DeepSeek R1</p>
 <!-- raw HTML omitted -->
-
-        </div>
+</div>
+        <a href="/post/agp-v202510/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
     <article class="post-card animated fadeInUp">
+        
         <a href="/post/CFmail/">
             <h2 class="post-title">新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）</h2>
         </a>
         <div class="post-info">
-            <span>
-                2025-03-02
-            </span>
-            <span>
-                12 分钟阅读
-            </span>
+            <span>2025-03-02</span>
+            <span>12 分钟阅读</span>
             
-            <a href="/tag/cloudflare/" class="post-tag">
-                # cloudflare
-            </a>
+            <a href="/tag/cloudflare/" class="post-tag"># cloudflare</a>
             
         </div>
         
-        <div class="post-abstract">
-            <p>@[toc]<br />
+        <div class="post-abstract"><p>@[toc]<br />
 KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
 企业邮箱的优势：<br />
 提升专业形象：使用企业邮箱（如yourname@yo&hellip;</p>
-
-        </div>
+</div>
+        <a href="/post/CFmail/" class="read-more">
+            Read more
+            <i class="ri-arrow-right-line"></i>
+        </a>
     </article>
     
 </div>
@@ -321,6 +348,7 @@ KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅�
 
         </div>
     </div>
+    <script src="/media/scripts/main.js"></script>
 <script>console.log("\n%c ✦ Gridea Pro v1.2.1 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
