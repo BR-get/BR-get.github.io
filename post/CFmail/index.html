@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780196222">
+<link rel="shortcut icon" href="/favicon.ico?v=1780196447">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded',function(){
     <meta name="description" content="" />
     <meta name="keywords" content="cloudflare" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    
+    <link rel="stylesheet" href="/media/css/prism-vs-light.css">
+    
 <meta name="description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
 <link rel="canonical" href="https://blog.shundebo.top/post/CFmail/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）","url":"https://blog.shundebo.top/post/CFmail/","description":"@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo\u0026hellip;","datePublished":"2025-03-02T10:54:23+08:00","dateModified":"2026-05-31T09:02:58+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780196222" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780196447" alt="">
     </a>
     <h1 class="site-title">
         shundebo的图书馆
@@ -365,9 +367,12 @@ async function handleRequest(request) {
         </div>
     </div>
 
-    <script>
-        hljs.initHighlightingOnLoad()
+    
+    <script src="/media/prism.js"></script>
+    <script>Prism.highlightAll()</script>
+    
 
+    <script>
         let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
         window.addEventListener("scroll", event => {

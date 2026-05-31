@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title>JVAV 编程语言介绍 🐣 | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780196222">
+<link rel="shortcut icon" href="/favicon.ico?v=1780196447">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JVAV 编程语言介绍 🐣 | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded',function(){
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    
+    <link rel="stylesheet" href="/media/css/prism-vs-light.css">
+    
 <meta name="description" content="JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 &amp;hellip;">
 <link rel="canonical" href="https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JVAV 编程语言介绍 🐣","url":"https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/","description":"JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 \u0026hellip;","datePublished":"2026-04-06T11:40:34+08:00","dateModified":"2026-05-31T09:02:58+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780196222" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780196447" alt="">
     </a>
     <h1 class="site-title">
         shundebo的图书馆
@@ -236,9 +238,12 @@ UTF-8 支持: ✅
         </div>
     </div>
 
-    <script>
-        hljs.initHighlightingOnLoad()
+    
+    <script src="/media/prism.js"></script>
+    <script>Prism.highlightAll()</script>
+    
 
+    <script>
         let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
         window.addEventListener("scroll", event => {

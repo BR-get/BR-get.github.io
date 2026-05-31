@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title>AGP V2025.10 | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780196222">
+<link rel="shortcut icon" href="/favicon.ico?v=1780196447">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="AGP V2025.10 | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded',function(){
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    
+    <link rel="stylesheet" href="/media/css/prism-vs-light.css">
+    
 <meta name="description" content="适用于 Grok 4 Fast Beta Gemini 2.5 Flash DeepSeek R1">
 <link rel="canonical" href="https://blog.shundebo.top/post/agp-v202510/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"AGP V2025.10","url":"https://blog.shundebo.top/post/agp-v202510/","description":"适用于 Grok 4 Fast Beta Gemini 2.5 Flash DeepSeek R1","datePublished":"2025-10-06T14:51:13+08:00","dateModified":"2026-05-31T09:02:58+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780196222" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780196447" alt="">
     </a>
     <h1 class="site-title">
         shundebo的图书馆
@@ -338,9 +340,12 @@ The neural reflection simulation has been executed internally and remains unseen
         </div>
     </div>
 
-    <script>
-        hljs.initHighlightingOnLoad()
+    
+    <script src="/media/prism.js"></script>
+    <script>Prism.highlightAll()</script>
+    
 
+    <script>
         let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
         window.addEventListener("scroll", event => {
