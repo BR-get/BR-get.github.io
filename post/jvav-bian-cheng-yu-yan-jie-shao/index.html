@@ -1,0 +1,273 @@
+<html>
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Gridea Pro 1.2.1">
+<title>JVAV 编程语言介绍 🐣 | shundebo的图书馆</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1780196002">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JVAV 编程语言介绍 🐣 | shundebo的图书馆 - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<script>
+
+document.addEventListener('DOMContentLoaded',function(){
+  function setBg(u){
+    document.body.style.backgroundImage='url('+u+')';
+    document.body.style.backgroundSize='cover';
+    document.body.style.backgroundPosition='center';
+    document.body.style.backgroundAttachment='fixed';
+    document.body.classList.add('has-bing-bg');
+  }
+  var c = localStorage.getItem('wow_bg'), t = new Date().toDateString();
+  if(c && c.indexOf(t+'|')===0) setBg(c.slice(t.length+1));
+  fetch('https://bing.biturl.top/?resolution=1920&format=json')
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d&&d.url){
+        var u = d.url.replace(/^http:/,'https:');
+        setBg(u); localStorage.setItem('wow_bg',t+'|'+u);
+      }
+    })
+    .catch(function(){});
+});
+</script>
+
+
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<meta name="description" content="JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 &amp;hellip;">
+<link rel="canonical" href="https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JVAV 编程语言介绍 🐣","url":"https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/","description":"JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 \u0026hellip;","datePublished":"2026-04-06T11:40:34+08:00","dateModified":"2026-05-31T09:02:58+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.shundebo.top","name":"shundebo的图书馆","position":1},{"@type":"ListItem","item":"https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/","name":"JVAV 编程语言介绍 🐣","position":2}]}</script>
+<meta property="og:title" content="JVAV 编程语言介绍 🐣">
+<meta property="og:description" content="JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 &amp;hellip;">
+<meta property="og:url" content="https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="shundebo的图书馆">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/">
+<meta name="twitter:title" content="JVAV 编程语言介绍 🐣">
+<meta name="twitter:description" content="JVAV 编程语言介绍 🐣 JVAV 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。 语言特性 Turing 完备 - 支持完整的计算能力 160+ 倒序函数 - 丰富的内置函数库 完整递归支持 - 支持 factorial、fibonacci 等递归算法 多行代码块 &amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-content">
+            
+
+<div class="top-nav" id="topNav">
+  <div class="top-nav-inner">
+    <nav class="top-nav-menu" id="topNavMenu">
+      
+      <a href="/" target="" class="top-nav-link">首页</a>
+      
+      <a href="/post" target="" class="top-nav-link">博客</a>
+      
+      <a href="/memos" target="" class="top-nav-link">闪念</a>
+      
+      <a href="/archives" target="" class="top-nav-link">归档</a>
+      
+      <a href="/tags" target="" class="top-nav-link">标签</a>
+      
+      <a href="/links" target="" class="top-nav-link">友链</a>
+      
+      <a href="/post/about" target="" class="top-nav-link">关于</a>
+      
+      <a href="/atom.xml" target="_blank" class="top-nav-link">RSS</a>
+    </nav>
+    <div class="top-nav-actions">
+      <a href="javascript:;" class="top-nav-icon" onclick="toggleDark()" id="darkBtn" title="切换主题">
+        <i class="ri-moon-line"></i>
+      </a>
+      <a href="javascript:;" class="top-nav-icon md-hide" onclick="toggleMenu()" id="menuBtn" title="菜单">
+        <i class="ri-menu-3-line"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<div class="site-header">
+    <a href="/">
+        <img class="avatar" src="/images/avatar.png?v=1780196002" alt="">
+    </a>
+    <h1 class="site-title">
+        shundebo的图书馆
+    </h1>
+    <p class="site-description">
+        图书馆
+    </p>
+    <div class="social-container">
+        
+        <a href="https://github.com/shundebo" target="_blank">
+            <i class="ri-github-line"></i>
+        </a>
+        
+        
+        <a href="https://x.com/shundebo__" target="_blank">
+            <i class="ri-twitter-line"></i>
+        </a>
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+
+window.addEventListener('scroll',function(){
+  var n=document.getElementById('topNav');
+  if(n){n.classList.toggle('top-nav-scrolled',window.scrollY>20);}
+});
+
+function toggleDark(){
+  var h=document.documentElement;h.classList.toggle('dark');
+  var d=h.classList.contains('dark');
+  localStorage.setItem('theme',d?'dark':'light');
+  document.getElementById('darkBtn').innerHTML=d?'<i class="ri-sun-line"></i>':'<i class="ri-moon-line"></i>';
+}
+
+function toggleMenu(){
+  var m=document.getElementById('topNavMenu');m.classList.toggle('open');
+  document.getElementById('menuBtn').innerHTML=m.classList.contains('open')?'<i class="ri-close-line"></i>':'<i class="ri-menu-3-line"></i>';
+}
+
+if(document.documentElement.classList.contains('dark')){
+  document.getElementById('darkBtn').innerHTML='<i class="ri-sun-line"></i>';
+}
+</script>
+
+            <div class="post-detail">
+                <article class="post">
+                    <h2 class="post-title">
+                        JVAV 编程语言介绍 🐣
+                    </h2>
+                    <div class="post-info">
+                        <span>
+                            2026-04-06
+                        </span>
+                        <span>
+                            1 分钟阅读
+                        </span>
+                        
+                    </div>
+                    
+                    <div class="post-content-wrapper">
+                        <div class="post-content" v-pre>
+                            <h1 id="jvav--">JVAV 编程语言介绍 🐣</h1>
+<p><strong>JVAV</strong> 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。</p>
+<h2 id="heading">语言特性</h2>
+<ul>
+<li><strong>Turing 完备</strong> - 支持完整的计算能力</li>
+<li><strong>160+ 倒序函数</strong> - 丰富的内置函数库</li>
+<li><strong>完整递归支持</strong> - 支持 factorial、fibonacci 等递归算法</li>
+<li><strong>多行代码块</strong> - 完整支持 if/elif/else/try/except 多行语句</li>
+<li><strong>循环结构</strong> - 支持 while 和 for 循环，包括嵌套循环</li>
+<li><strong>推导式语法</strong> - 支持列表/字典/集合推导式</li>
+<li><strong>插件系统</strong> - 提供 7 个内置插件扩展功能</li>
+<li><strong>UTF-8 支持</strong> - 完善的 Unicode 支持</li>
+<li><strong>沙箱安全</strong> - 安全可靠的运行环境</li>
+</ul>
+<h2 id="heading-1">核心特性一览</h2>
+<pre><code>Turing 完备: ✅
+160+ 倒序函数: ✅
+完整递归支持: ✅
+多行代码块: ✅
+插件系统: ✅ (7个内置插件)
+UTF-8 支持: ✅
+沙箱安全: ✅
+</code></pre>
+<h2 id="heading-2">快速开始</h2>
+<pre><code class="language-jvav"># 欢迎使用 JVAV
+输出(&quot;你好，JVAV!&quot;)
+</code></pre>
+<h2 id="heading-3">了解更多</h2>
+<ul>
+<li><a href="https://jvav-with-u.top/downloads/index.html">下载 JVAV</a></li>
+<li><a href="https://jvav-with-u.top/changelog.html">查看更新日志</a></li>
+<li><a href="https://jvav-with-u.top/help.html">快速上手指南</a></li>
+</ul>
+<hr />
+<p><em>JVAV - 脑波原生编程语言 | BR inc. 2018-2026</em></p>
+
+                        </div>
+                        <div class="toc-container">
+                            
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            
+            <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="/post/agp-v202510/">
+                    <h3 class="post-title">
+                        AGP V2025.10
+                    </h3>
+                </a>
+            </div>
+            
+
+            
+
+            
+<div class="site-footer">
+    
+    <div class="footer-meta">
+        本站使用 <a href="https://www.jsdelivr.com/package/npm/misans" target="_blank" rel="noopener">小米 MiSans</a> 字体
+        <span class="sep">·</span>
+        <a href="https://icp.gov.moe/?keyword=20258222" target="_blank">萌ICP备20258222号</a>
+        <span class="sep">·</span>
+        <a class="rss" href="/atom.xml" target="_blank"><i class="ri-rss-line"></i></a>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        hljs.initHighlightingOnLoad()
+
+        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+        window.addEventListener("scroll", event => {
+            let fromTop = window.scrollY;
+
+            mainNavLinks.forEach((link, index) => {
+                let section = document.getElementById(decodeURI(link.hash).substring(1));
+                let nextSection = null
+                if (mainNavLinks[index + 1]) {
+                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+                }
+                if (section.offsetTop <= fromTop) {
+                    if (nextSection) {
+                        if (nextSection.offsetTop > fromTop) {
+                            link.classList.add("current");
+                        } else {
+                            link.classList.remove("current");
+                        }
+                    } else {
+                        link.classList.add("current");
+                    }
+                } else {
+                    link.classList.remove("current");
+                }
+            });
+        });
+
+    </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.1 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>
