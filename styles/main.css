@@ -319,14 +319,18 @@ img { max-width: 100%; height: auto; }
   width:8px; height:8px; background:#667eea;
   border-radius:50%; transform:translate(-50%,-50%);
   transition:width .15s,height .15s,background .15s;
+  user-select:none; -webkit-user-select:none;
 }
 #cursor-dot.hover { width:12px; height:12px; background:#a5b4fc; }
 #cursor-dot.hide { opacity:0; }
+#cursor-dot.fish { width:26px; height:26px; background:transparent!important; font-size:18px; line-height:26px; text-align:center; }
+#cursor-ring.fish { width:40px; height:40px; border-color:#fbbf24; background:rgba(251,191,36,.1); }
 #cursor-ring {
   position:fixed; pointer-events:none; z-index:99998;
   width:36px; height:36px; border:2px solid #667eea;
   border-radius:50%; transform:translate(-50%,-50%);
   transition:width .15s,height .15s,border-color .15s;
+  user-select:none; -webkit-user-select:none;
 }
 #cursor-ring.hover { width:48px; height:48px; border-color:#a5b4fc; }
 #cursor-ring.hide { opacity:0; }

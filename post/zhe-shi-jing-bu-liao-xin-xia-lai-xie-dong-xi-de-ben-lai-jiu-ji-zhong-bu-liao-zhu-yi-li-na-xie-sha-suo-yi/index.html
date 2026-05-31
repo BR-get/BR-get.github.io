@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title>这是静不了心下来写东西的本来就集中不了注意力那写啥所以 | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780199426">
+<link rel="shortcut icon" href="/favicon.ico?v=1780201892">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="这是静不了心下来写东西的本来就集中不了注意力那写啥所以 | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780199426" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780201892" alt="">
     </a>
     <h1 class="site-title">shundebo的图书馆</h1>
     <p class="site-description">图书馆</p>
@@ -172,6 +172,7 @@ if(document.documentElement.classList.contains('dark')){
 
 (function(){
   if('ontouchstart' in window||navigator.maxTouchPoints>0)return;
+  document.documentElement.classList.add('cursor-custom');
   var d=document.createElement('div');d.id='cursor-dot';
   var r=document.createElement('div');r.id='cursor-ring';
   document.body.appendChild(d);document.body.appendChild(r);
@@ -191,6 +192,15 @@ if(document.documentElement.classList.contains('dark')){
   document.addEventListener('mouseout',function(e){
     var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
     if(t){d.classList.remove('hover');r.classList.remove('hover');}
+  });
+  
+  var fishTimer=null;
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.isContentEditable)return;
+    if(e.key.length!==1||e.ctrlKey||e.metaKey)return;
+    d.classList.add('fish');r.classList.add('fish');d.textContent='🐟';
+    clearTimeout(fishTimer);
+    fishTimer=setTimeout(function(){d.classList.remove('fish');r.classList.remove('fish');d.textContent='';},800);
   });
 })();
 </script>
@@ -240,6 +250,9 @@ if(document.documentElement.classList.contains('dark')){
             
             
             
+            <div id="waline-comment" style="padding:16px 0;"></div>
+            
+            
 <div class="site-footer">
     
     <div class="footer-meta">
@@ -285,6 +298,25 @@ if(document.documentElement.classList.contains('dark')){
     
     <script src="/media/prism.js"></script>
     <script>Prism.highlightAll()</script>
+    
+
+    
+    
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<script>
+Waline.init({
+  el: '#waline-comment',
+  serverURL: 'https:\/\/blogwaline-gamma.vercel.app',
+  lang: 'zh-CN',
+  pageSize: parseInt('10', 10),
+  avatar: 'mp',
+  reaction: true,
+  visitor: false,
+  dark: 'html[class="dark"]',
+})
+</script>
+
     
 
     <script>

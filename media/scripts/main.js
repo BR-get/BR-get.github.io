@@ -7,7 +7,7 @@ function copyToClipboard(t){
 }
 
 /* ===== Page ready ===== */
-document.addEventListener('DOMContentLoaded',function(){
+function enhanceCode(){
   var md=document.querySelector('.post-content,.markdown');
   var pres=md?md.querySelectorAll('pre'):[];
 
@@ -82,8 +82,11 @@ document.addEventListener('DOMContentLoaded',function(){
       h.insertBefore(a,h.firstChild);
     });
   }
-});
+};
+document.addEventListener('DOMContentLoaded',enhanceCode);
+if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=function(){_p.call(this);setTimeout(enhanceCode,100);};}
 
+/* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
 /* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
 (function(){
   var seq=[],trigger=['m','e','o','w'];
@@ -141,7 +144,7 @@ setTimeout(function(){
   if('ontouchstart' in window)return;
   var colors=['#ff6b6b','#ffd93d','#6bcbff','#a5b4fc','#ff8aeb','#51cf66'];
   document.addEventListener('click',function(e){
-    for(var i=0;i<8;i++){
+    for(var i=0;i<8;i++)(function(){
       var dot=document.createElement('div');
       dot.style.cssText='position:fixed;pointer-events:none;z-index:99995;width:6px;height:6px;border-radius:50%;background:'+colors[Math.floor(Math.random()*colors.length)]+';left:'+e.clientX+'px;top:'+e.clientY+'px;transition:all .6s ease-out;opacity:1';
       document.body.appendChild(dot);
@@ -151,7 +154,26 @@ setTimeout(function(){
         dot.style.opacity='0';
       });
       setTimeout(function(){if(dot.parentNode)dot.parentNode.removeChild(dot);},700);
-    }
+    })();
   });
 })();
 
+/* ===== ⌨️ 打字机彩蛋 — 敲字飘萌语 ===== */
+(function(){
+  var words=['喵','咕','唔','嗷','呜','咩','哞','唧','啾','叽','旺','呜咪','嗷呜','咕噜','啪','咚','喵呜','嗷呜','嘤','哒'];
+  var mx=window.innerWidth/2,my=window.innerHeight/2;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.isContentEditable)return;
+    if(e.key.length!==1||e.ctrlKey||e.metaKey||e.altKey)return;
+    var el=document.createElement('span');
+    el.textContent=words[Math.floor(Math.random()*words.length)];
+    el.style.cssText='position:fixed;pointer-events:none;z-index:99994;font-size:20px;font-weight:700;color:#667eea;left:'+mx+'px;top:'+my+'px;opacity:1;transition:all .8s ease-out;';
+    document.body.appendChild(el);
+    requestAnimationFrame(function(){
+      el.style.transform='translateY(-60px)';
+      el.style.opacity='0';
+    });
+    setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},900);
+  });
+})();
