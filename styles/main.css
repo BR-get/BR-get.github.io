@@ -190,9 +190,10 @@ img { max-width: 100%; height: auto; }
 }
 .post-content pre code {
   display: block; padding: 1.2em; overflow-x: auto;
-  font-size: .9em; line-height: 1.6; color: #e2e8f0;
+  font-size: .875rem; line-height: 1.5; color: #e2e8f0;
   background: transparent;
 }
+code[class*="language-"] { font-size:.875rem; line-height:1.5; }
 .post-content ul, .post-content ol {
   padding-left: 28px; line-height: 1.8; margin-bottom: 1.25em;
 }
@@ -380,11 +381,13 @@ html.dark .back-to-top { background:#374151; color:#d1d5db; border-color:#4b5563
 /* ===== Code block: line numbers ===== */
 .post-content pre .line-numbers {
   position:absolute; top:0; left:0; z-index:1;
-  padding:1.2em 8px; text-align:right; color:#475569;
-  user-select:none; font-size:.9em; line-height:1.6;
+  padding:36px 12px 12px; text-align:right; color:#475569;
+  user-select:none; font-size:.875rem; line-height:1.5;
   font-family:Menlo,Monaco,Consolas,monospace;
   background:rgba(0,0,0,.1); min-width:2.5em; border-radius:8px 0 0 8px;
 }
+code[class*="language-"], pre[class*="language-"] { text-shadow:none; }
+pre[class*="language-"] { padding:0 !important; margin:0 !important; }
 .post-content pre .line-numbers span { display:block; }
 .post-content pre.has-line-numbers code { padding-left:3.5em; }
 

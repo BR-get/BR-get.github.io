@@ -7,6 +7,18 @@ function copyToClipboard(t){
 }
 
 /* ===== Page ready ===== */
+function addLineNums(pre){
+  var code=pre.querySelector('code');
+  if(!code||code.lineNumbered)return;code.lineNumbered=true;
+  var lines=code.textContent.split('\n');
+  if(lines.length&&lines[0].trim()==='')lines.shift();
+  if(lines.length&&lines[lines.length-1].trim()==='')lines.pop();
+  if(lines.length<2)return;
+  var nums=document.createElement('div');nums.className='line-numbers';
+  for(var i=0;i<lines.length;i++){var s=document.createElement('span');s.textContent=i+1;nums.appendChild(s);}
+  pre.insertBefore(nums,code);pre.classList.add('has-line-numbers');code.classList.add('has-line-numbers');
+}
+
 function enhanceCode(){
   var md=document.querySelector('.post-content,.markdown');
   var pres=md?md.querySelectorAll('pre'):[];
@@ -33,8 +45,9 @@ function enhanceCode(){
     });
   }
 
-  /* Code: copy button + line numbers + lang tags */
+  /* Copy button + lang tags + line numbers */
   pres.forEach(function(pre){
+    if(pre._done)return;pre._done=true;
     /* Copy button */
     var btn=document.createElement('button');
     btn.className='copy-btn';btn.innerHTML='<i class="ri-clipboard-line"></i>';
@@ -46,26 +59,12 @@ function enhanceCode(){
         setTimeout(function(){btn.innerHTML='<i class="ri-clipboard-line"></i>';},2000);
       });
     });
-
-    /* Line numbers */
+    /* Language tag */
     var code=pre.querySelector('code');
-    if(!code||code.lineNumbered)return;code.lineNumbered=true;
-    var lines=code.textContent.split('\n');
-    if(lines.length&&lines[0].trim()==='')lines.shift();
-    if(lines.length&&lines[lines.length-1].trim()==='')lines.pop();
-    if(lines.length<2)return;
-    var nums=document.createElement('div');nums.className='line-numbers';
-    for(var i=0;i<lines.length;i++){var s=document.createElement('span');s.textContent=i+1;nums.appendChild(s);}
-    pre.insertBefore(nums,code);pre.classList.add('has-line-numbers');code.classList.add('has-line-numbers');
-  });
-
-  /* Language tags */
-  document.querySelectorAll('.post-content pre code[class*="language-"],.markdown pre code[class*="language-"]').forEach(function(code){
-    if(code.langTagged)return;code.langTagged=true;
-    var m=code.className.match(/language-(\w+)/);if(!m)return;
-    var name=m[1].charAt(0).toUpperCase()+m[1].slice(1);
-    var tag=document.createElement('span');tag.className='lang-tag';tag.textContent=name;
-    code.parentElement.appendChild(tag);
+    if(code){var m=code.className.match(/language-(\w+)/);if(m){var t=document.createElement('span');t.className='lang-tag';t.textContent=m[1].charAt(0).toUpperCase()+m[1].slice(1);code.parentElement.appendChild(t);}}
+    /* Line numbers (deferred for lang blocks to let Prism finish first) */
+    if(code&&!code.className.match(/language-/))addLineNums(pre);
+    else if(code)setTimeout(function(){addLineNums(pre);},200);
   });
 
   /* Heading anchors */
@@ -84,7 +83,7 @@ function enhanceCode(){
   }
 };
 document.addEventListener('DOMContentLoaded',enhanceCode);
-if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=function(){_p.call(this);setTimeout(enhanceCode,100);};}
+if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=function(){_p.call(this);enhanceCode();};}
 
 /* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
 /* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
