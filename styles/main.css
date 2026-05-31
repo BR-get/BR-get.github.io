@@ -308,6 +308,25 @@ img { max-width: 100%; height: auto; }
 .site-footer .sep { margin: 0 6px; color: #ccc; }
 .rss { display: inline-block; }
 
+/* ===== Memos ===== */
+.memos-container { flex: 1; padding: 32px 0; }
+.memos-container .page-title {
+  font-size: 24px; font-weight: 700; text-align: center;
+  margin-bottom: 32px; color: #111;
+}
+.memos-container .page-title i { margin-right: 8px; color: #667eea; }
+.memo-card {
+  padding: 20px 24px; margin-bottom: 16px;
+  background: #fff; border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border: 1px solid #f0f0f0;
+}
+.memo-content { line-height: 1.7; font-size: 15px; color: #444; margin-bottom: 12px; }
+.memo-meta { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.memo-date { color: #bbb; }
+.memo-tag { color: #999; }
+.memo-tag:hover { color: #667eea; }
+
 /* ===== hljs ===== */
 .hljs { display: block; overflow-x: auto; padding: .5em; background: #f8f9fa; color: #333; }
 .hljs-comment, .hljs-quote { color: #998; font-style: italic; }
