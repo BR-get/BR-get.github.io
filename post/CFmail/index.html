@@ -1,12 +1,11 @@
 <html>
-
 <head>
     
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.1">
 <title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780196447">
+<link rel="shortcut icon" href="/favicon.ico?v=1780197452">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -42,8 +41,6 @@ document.addEventListener('DOMContentLoaded',function(){
     <meta name="keywords" content="cloudflare" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     
-    <link rel="stylesheet" href="/media/css/prism-vs-light.css">
-    
 <meta name="description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
 <link rel="canonical" href="https://blog.shundebo.top/post/CFmail/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）","url":"https://blog.shundebo.top/post/CFmail/","description":"@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo\u0026hellip;","datePublished":"2025-03-02T10:54:23+08:00","dateModified":"2026-05-31T09:02:58+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
@@ -60,9 +57,8 @@ document.addEventListener('DOMContentLoaded',function(){
 <meta name="twitter:description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
-
 <body>
-    <div class="main">
+    <div class="main" id="app">
         <div class="main-content">
             
 
@@ -100,7 +96,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780196447" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780197452" alt="">
     </a>
     <h1 class="site-title">
         shundebo的图书馆
@@ -151,26 +147,17 @@ if(document.documentElement.classList.contains('dark')){
 
             <div class="post-detail">
                 <article class="post">
-                    <h2 class="post-title">
-                        新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）
-                    </h2>
+                    <h2 class="post-title">新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）</h2>
                     <div class="post-info">
-                        <span>
-                            2025-03-02
-                        </span>
-                        <span>
-                            12 分钟阅读
-                        </span>
+                        <span>2025-03-02</span>
+                        <span>12 分钟阅读</span>
                         
-                        <a href="/tag/cloudflare/" class="post-tag">
-                            # cloudflare
-                        </a>
+                        <a href="/tag/cloudflare/" class="post-tag"># cloudflare</a>
                         
                     </div>
                     
                     <div class="post-content-wrapper">
-                        <div class="post-content" v-pre>
-                            <p>@[toc]<br />
+                        <div class="post-content" v-pre><p>@[toc]<br />
 KImi的<del>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
 企业邮箱的优势：<br />
 提升专业形象：使用企业邮箱（如yourname@yourdomain.com）可以让你在客户眼中显得更专业、更可信。<br />
@@ -339,19 +326,13 @@ async function handleRequest(request) {
 点击访问<br />
 发送后错误信息如果是undefine就算成功了！！！<br />
 完成<img src="https://blog.shundebo.top/post-images/1740891446056.png" alt="" /></p>
-
-                        </div>
-                        <div class="toc-container">
-                            
-                        </div>
+</div>
+                        <div class="toc-container"></div>
                     </div>
                 </article>
             </div>
-
             
-
             
-
             
 <div class="site-footer">
     
@@ -366,42 +347,24 @@ async function handleRequest(request) {
 
         </div>
     </div>
-
     
-    <script src="/media/prism.js"></script>
-    <script>Prism.highlightAll()</script>
-    
-
     <script>
-        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-        window.addEventListener("scroll", event => {
-            let fromTop = window.scrollY;
-
-            mainNavLinks.forEach((link, index) => {
-                let section = document.getElementById(decodeURI(link.hash).substring(1));
-                let nextSection = null
-                if (mainNavLinks[index + 1]) {
-                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-                }
-                if (section.offsetTop <= fromTop) {
-                    if (nextSection) {
-                        if (nextSection.offsetTop > fromTop) {
-                            link.classList.add("current");
-                        } else {
-                            link.classList.remove("current");
-                        }
-                    } else {
-                        link.classList.add("current");
-                    }
-                } else {
-                    link.classList.remove("current");
-                }
+        var mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+        if (mainNavLinks.length) {
+            window.addEventListener("scroll", function() {
+                var fromTop = window.scrollY;
+                mainNavLinks.forEach(function(link, i) {
+                    var section = document.getElementById(decodeURI(link.hash).substring(1));
+                    var next = mainNavLinks[i + 1];
+                    var nextSection = next ? document.getElementById(decodeURI(next.hash).substring(1)) : null;
+                    if (section && section.offsetTop <= fromTop) {
+                        if (!nextSection || nextSection.offsetTop > fromTop) link.classList.add("current");
+                        else link.classList.remove("current");
+                    } else link.classList.remove("current");
+                });
             });
-        });
-
+        }
     </script>
 <script>console.log("\n%c ✦ Gridea Pro v1.2.1 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
-
 </html>
