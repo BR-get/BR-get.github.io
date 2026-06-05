@@ -599,6 +599,66 @@ html.dark .social-icon:hover { color:#a5b4fc; }
   .site-header { padding-top: 55px; }
 }
 
+/* ===== Latest Memo on Homepage ===== */
+.latest-memo {
+  margin-bottom: 20px;
+  animation: fadeInUp .5s both;
+}
+.latest-memo-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px; padding: 0 4px;
+  font-size: 14px; font-weight: 600; color: #888;
+}
+.latest-memo-header i { font-size: 18px; color: #667eea; }
+.latest-memo-more {
+  margin-left: auto; font-size: 13px; font-weight: 400;
+  color: #aaa; transition: all .15s; display: flex; align-items: center; gap: 2px;
+}
+.latest-memo-more:hover { color: #667eea; gap: 6px; }
+.latest-memo-card {
+  background: linear-gradient(135deg, rgba(102,126,234,.06), rgba(165,180,252,.06));
+  border: 1px solid rgba(102,126,234,.12);
+  border-radius: 12px; padding: 20px 24px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: all .25s ease;
+}
+.latest-memo-card:hover {
+  border-color: rgba(102,126,234,.3);
+  box-shadow: 0 4px 20px rgba(102,126,234,.08);
+}
+.latest-memo-time {
+  font-size: 12px; color: #aaa; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 4px;
+}
+.latest-memo-time::before { content: '📝'; font-size: 12px; }
+.latest-memo-content {
+  line-height: 1.75; font-size: 15px; color: #555;
+  word-break: break-word;
+}
+.latest-memo-content img { max-width: 100%; border-radius: 8px; margin: 8px 0; }
+.latest-memo-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.latest-memo-loading { font-size: 14px; color: #bbb; text-align: center; padding: 8px 0; }
+.latest-memo-tag {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 3px 10px; font-size: 12px; color: #888;
+  background: #f5f5f5; border-radius: 999px; transition: all .15s;
+}
+.latest-memo-tag i { font-size: 10px; }
+.latest-memo-tag:hover { color: #667eea; background: #eef; }
+
+html.dark .latest-memo-header { color: #9ca3af; }
+html.dark .latest-memo-card {
+  background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(165,180,252,.08));
+  border-color: rgba(102,126,234,.15);
+}
+html.dark .latest-memo-card:hover {
+  border-color: rgba(102,126,234,.35);
+  box-shadow: 0 4px 20px rgba(102,126,234,.12);
+}
+html.dark .latest-memo-content { color: #d1d5db; }
+html.dark .latest-memo-tag { background: #374151; color: #9ca3af; }
+html.dark .latest-memo-tag:hover { color: #a5b4fc; background: #1e3a5f; }
+
 /* ===== Dark Mode ===== */
 html.dark body { background: #1a1a2e; color: #d1d5db; }
 html.dark a { color: #e5e7eb; }
