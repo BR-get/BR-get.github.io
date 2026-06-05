@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780671427">
+<link rel="shortcut icon" href="/favicon.ico?v=1780671681">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded',function(){
     
     <link rel="stylesheet" href="/media/css/prism-vs-light.css">
     
-<meta name="description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
+<meta name="description" content="KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yourdomain&amp;hellip;">
 <meta name="keywords" content="shundebo">
 <link rel="canonical" href="https://blog.shundebo.top/post/CFmail/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）","url":"https://blog.shundebo.top/post/CFmail/","description":"@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo\u0026hellip;","datePublished":"2025-03-02T10:54:23+08:00","dateModified":"2026-06-04T12:55:01+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）","url":"https://blog.shundebo.top/post/CFmail/","description":"KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yourdomain\u0026hellip;","datePublished":"2025-03-02T10:54:23+08:00","dateModified":"2026-06-05T22:58:25+08:00","author":{"@type":"Person","name":"shundebo的图书馆"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"shundebo的图书馆"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.shundebo.top","name":"shundebo的图书馆","position":1},{"@type":"ListItem","item":"https://blog.shundebo.top/post/CFmail/","name":"新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）","position":2}]}</script>
 <meta property="og:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）">
-<meta property="og:description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
+<meta property="og:description" content="KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yourdomain&amp;hellip;">
 <meta property="og:url" content="https://blog.shundebo.top/post/CFmail/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="shundebo的图书馆">
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://blog.shundebo.top/post/CFmail/">
 <meta name="twitter:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）">
-<meta name="twitter:description" content="@[toc] KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yo&amp;hellip;">
+<meta name="twitter:description" content="KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yourdomain&amp;hellip;">
 <meta name="twitter:image" content="/images/avatar.png">
 <meta name="twitter:creator" content="@shundebo__">
 <meta name="msvalidate.01" content="6E0F0238B2AB5D777FEA4D5A20B9D5DE" />
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780671427" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780671681" alt="">
     </a>
     <h1 class="site-title">shundebo的图书馆</h1>
     <p class="site-description">图书馆</p>
@@ -217,8 +217,7 @@ if(document.documentElement.classList.contains('dark')){
                     </div>
                     
                     <div class="post-content-wrapper">
-                        <div class="post-content" v-pre><p>@[toc]<br />
-KImi的<del>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
+                        <div class="post-content" v-pre><p>KImi的<del>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
 企业邮箱的优势：<br />
 提升专业形象：使用企业邮箱（如yourname@yourdomain.com）可以让你在客户眼中显得更专业、更可信。<br />
 集中管理：方便团队协作，所有邮件都集中在一个域名下，便于分类和管理。<br />
