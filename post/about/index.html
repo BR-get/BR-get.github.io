@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>about | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780709236">
+<link rel="shortcut icon" href="/favicon.ico?v=1780753541">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="about | shundebo的图书馆 - Atom Feed" href="/atom.xml">
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
 
     
-    <link rel="stylesheet" href="/media/css/prism-vs-light.css">
+    <link rel="stylesheet" href="/media/css/prism-atom-dark.css">
     
 <meta name="description" content="关于我 我是shundebo 技能 HTML, CSS, JavaScript：一点点，用于构建现代化的网页与应用程序 Python：一点点，广泛用于数据分析、机器学习和自动化任务 项目经验 我认为值得一提的： JVAV：抄的 &amp;hellip;">
 <meta name="keywords" content="shundebo">
@@ -69,12 +69,13 @@ document.addEventListener('DOMContentLoaded',function(){
 <meta property="og:url" content="https://blog.shundebo.top/post/about/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="shundebo的图书馆">
-<meta property="og:image" content="/images/avatar.png">
+<meta property="og:image" content="/images/theme/1.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://blog.shundebo.top/post/about/">
 <meta name="twitter:title" content="about">
 <meta name="twitter:description" content="关于我 我是shundebo 技能 HTML, CSS, JavaScript：一点点，用于构建现代化的网页与应用程序 Python：一点点，广泛用于数据分析、机器学习和自动化任务 项目经验 我认为值得一提的： JVAV：抄的 &amp;hellip;">
-<meta name="twitter:image" content="/images/avatar.png">
+<meta name="twitter:image" content="/images/theme/1.png">
+<meta name="twitter:site" content="@shundebo__">
 <meta name="twitter:creator" content="@shundebo__">
 <meta name="msvalidate.01" content="6E0F0238B2AB5D777FEA4D5A20B9D5DE" />
 </head>
@@ -91,9 +92,11 @@ document.addEventListener('DOMContentLoaded',function(){
       
       <a href="/memos" target="" class="top-nav-link">闪念</a>
       
-      <a href="/archives" target="" class="top-nav-link">归档</a>
+      <a href="/?page=links" target="" class="top-nav-link">友链</a>
       
       <a href="/tags" target="" class="top-nav-link">标签</a>
+      
+      <a href="/archives" target="" class="top-nav-link">归档</a>
       
       <a href="/post/about" target="" class="top-nav-link">关于</a>
       
@@ -113,7 +116,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780709236" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1780753541" alt="">
     </a>
     <h1 class="site-title">shundebo的图书馆</h1>
     <p class="site-description">图书馆</p>
@@ -124,7 +127,7 @@ document.addEventListener('DOMContentLoaded',function(){
         
         
         
-        <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon"><i class="ri-mail-line"></i></a>
+        <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon" data-type="mail"><i class="ri-mail-line"></i></a>
         
         
         <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
@@ -171,6 +174,11 @@ if(document.documentElement.classList.contains('dark')){
 
 
 (function(){
+  
+  document.querySelectorAll('a[data-type="mail"]').forEach(function(a){
+    var h = a.getAttribute('href');
+    if(h && h.indexOf('mailto:')!==0 && h.indexOf('http')!==0) a.href='mailto:'+h;
+  });
   if('ontouchstart' in window||navigator.maxTouchPoints>0)return;
   document.documentElement.classList.add('cursor-custom');
   var d=document.createElement('div');d.id='cursor-dot';
@@ -305,7 +313,6 @@ if(document.documentElement.classList.contains('dark')){
 
     
     
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline-meta.css">
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <style>
 #waline-comment {

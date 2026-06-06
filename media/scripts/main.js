@@ -1,4 +1,4 @@
-/* ===== Copy to clipboard ===== */
+﻿/* ===== Copy to clipboard ===== */
 function copyToClipboard(t){
   if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t);
   var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.left='-9999px';
@@ -71,7 +71,7 @@ function enhanceCode(){
   if(md){
     md.querySelectorAll('h2,h3,h4').forEach(function(h){
       if(h.querySelector('.heading-anchor'))return;
-      var id=h.id||h.textContent.replace(/[^\w一-鿿]+/g,'-').replace(/(^-|-$)/g,'').toLowerCase();
+      var id=h.id||h.textContent.replace(/[^\w涓€-榭縘+/g,'-').replace(/(^-|-$)/g,'').toLowerCase();
       if(!id)return;h.id=id;
       var a=document.createElement('a');a.className='heading-anchor';a.href='#'+id;a.textContent='#';
       a.addEventListener('click',function(e){
@@ -85,8 +85,7 @@ function enhanceCode(){
 document.addEventListener('DOMContentLoaded',enhanceCode);
 if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=function(){_p.call(this);enhanceCode();};}
 
-/* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
-/* ===== 🐟 MEOW 彩蛋 — 输入 meow 下鱼雨 ===== */
+/* ===== MEOW easter egg ===== */
 (function(){
   var seq=[],trigger=['m','e','o','w'];
   document.addEventListener('keydown',function(e){
@@ -100,7 +99,7 @@ if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=func
         el.style.animationDuration=(4+Math.random()*3)+'s';
         el.style.animationDelay=(Math.random()*2)+'s';
         var inner=document.createElement('span');
-        inner.textContent=['🐟','🐠','🐡'][Math.floor(Math.random()*3)];
+        inner.textContent=['馃悷','馃悹','馃悺'][Math.floor(Math.random()*3)];
         inner.style.fontSize=(16+Math.random()*28)+'px';
         inner.style.display='inline-block';
         inner.style.transform='rotate('+(Math.random()*60-30)+'deg)';
@@ -112,7 +111,7 @@ if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=func
   });
 })();
 
-/* ===== 🐟 复制彩蛋 — 卖萌 toast ===== */
+/* ===== Copy toast ===== */
 (function(){
   var timer=null;
   document.addEventListener('copy',function(){
@@ -129,16 +128,16 @@ if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=func
   });
 })();
 
-/* ===== 🐱 控制台猫猫 ===== */
+/* ===== Console cat ===== */
 setTimeout(function(){
-  console.log('%c🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱\n🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱🐱','color:#fbbf24;');
-  window.meow=function(){console.log('%c🐱 喵！🐱','font-size:24px;color:#fbbf24;');};
+  console.log('%c🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟\n🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟','color:#fbbf24;');
+  window.meow=function(){console.log('%c🐟 喵！🐟','font-size:24px;color:#fbbf24;');};
   window.rainFish=function(){
     'meow'.split('').forEach(function(k,i){setTimeout(function(){document.dispatchEvent(new KeyboardEvent('keydown',{key:k}));},i*150);});
   };
 },1000);
 
-/* ===== 🎆 鼠标点击烟花 ===== */
+/* ===== Fireworks ===== */
 (function(){
   if('ontouchstart' in window)return;
   var colors=['#ff6b6b','#ffd93d','#6bcbff','#a5b4fc','#ff8aeb','#51cf66'];
@@ -157,9 +156,9 @@ setTimeout(function(){
   });
 })();
 
-/* ===== ⌨️ 打字机彩蛋 — 敲字飘萌语 ===== */
+/* ===== Typing floating words ===== */
 (function(){
-  var words=['喵','咕','唔','嗷','呜','咩','哞','唧','啾','叽','旺','呜咪','嗷呜','咕噜','啪','咚','喵呜','嗷呜','嘤','哒'];
+  var words=['喵','呜','嗷','哼','嗯','啾','叽','嘎','哇','呀','呜喵','嗷呜','咕噜','啪','哒','喵喵','嗷呜','啾','嘎'];
   var mx=window.innerWidth/2,my=window.innerHeight/2;
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
   document.addEventListener('keydown',function(e){
