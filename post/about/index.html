@@ -5,11 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Gridea Pro 1.2.2">
 <title>about | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1780753541">
+<link rel="shortcut icon" href="/favicon.ico?v=1783526876">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="about | shundebo的图书馆 - Atom Feed" href="/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" media="print" onload="this.media='all'">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Normal.min.css" media="print" onload="this.media='all'">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "shundebo的图书馆",
+  "description": "图书馆",
+  "url": "https:\/\/blog.shundebo.top"
+}
+</script>
 
 <script>
 
@@ -22,7 +36,10 @@ document.addEventListener('DOMContentLoaded',function(){
     document.body.classList.add('has-bing-bg');
   }
   var c = localStorage.getItem('wow_bg'), t = new Date().toDateString();
-  if(c && c.indexOf(t+'|')===0) setBg(c.slice(t.length+1));
+  if(c && c.indexOf(t+'|')===0) {
+    setBg(c.slice(t.length+1));
+    return;
+  }
   fetch('https://bing.biturl.top/?resolution=1920&format=json')
     .then(function(r){return r.json()})
     .then(function(d){
@@ -48,6 +65,22 @@ document.addEventListener('DOMContentLoaded',function(){
     <meta name="twitter:description" content="">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="/post/about/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "about",
+      "description": "",
+      "datePublished": "2025-03-08 13:42:41 \u002b0800 CST",
+      "url": "\/post\/about\/",
+      "author": {
+        "@type": "Person",
+        "name": "shundebo的图书馆"
+      }
+      
+    }
+    </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
@@ -84,6 +117,9 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="main-content">
             
 
+<a href="#app" class="skip-to-content" aria-label="跳到主要内容">跳到主要内容</a>
+
+
 <div class="top-nav" id="topNav">
   <div class="top-nav-inner">
     <nav class="top-nav-menu" id="topNavMenu">
@@ -103,10 +139,10 @@ document.addEventListener('DOMContentLoaded',function(){
       <a href="/atom.xml" target="_blank" class="top-nav-link">RSS</a>
     </nav>
     <div class="top-nav-actions">
-      <a href="javascript:;" class="top-nav-icon" onclick="toggleDark()" id="darkBtn" title="切换主题">
+      <a href="javascript:;" class="top-nav-icon" onclick="toggleDark()" id="darkBtn" title="切换主题" aria-label="切换暗色/亮色主题">
         <i class="ri-moon-line"></i>
       </a>
-      <a href="javascript:;" class="top-nav-icon md-hide" onclick="toggleMenu()" id="menuBtn" title="菜单">
+      <a href="javascript:;" class="top-nav-icon md-hide" onclick="toggleMenu()" id="menuBtn" title="菜单" aria-label="展开导航菜单" aria-expanded="false" role="button">
         <i class="ri-menu-3-line"></i>
       </a>
     </div>
@@ -116,100 +152,48 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <div class="site-header">
     <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1780753541" alt="">
+        <img class="avatar" src="/images/avatar.png?v=1783526876" alt="头像" loading="lazy">
     </a>
     <h1 class="site-title">shundebo的图书馆</h1>
     <p class="site-description">图书馆</p>
     
-    <div class="social-container">
-        
-        <span class="social-label">炸死我</span>
-        
-        
-        
-        <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon" data-type="mail"><i class="ri-mail-line"></i></a>
-        
-        
-        <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
-        
-        
-        <a href="https://x.com/shundebo__" target="_blank" class="social-icon"><i class="ri-twitter-line"></i></a>
-        
-        
-        
-        
-        
-        <a href="https://t.me/aziwaninndroichi" target="_blank" class="social-icon"><i class="ri-telegram-line"></i></a>
-        
-        
-        
-        
-        
-    </div>
+
+<div class="social-container">
     
+    <span class="social-label">炸死我</span>
+    
+    
+    
+    <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon" data-type="mail"><i class="ri-mail-line"></i></a>
+    
+    
+    <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
+    
+    
+    <a href="https://x.com/shundebo__" target="_blank" class="social-icon"><i class="ri-twitter-line"></i></a>
+    
+    
+    
+    
+    
+    <a href="https://t.me/aziwaninndroichi" target="_blank" class="social-icon"><i class="ri-telegram-line"></i></a>
+    
+    
+    
+    
+    
+</div>
+
+
 </div>
 
 <script>
 
-window.addEventListener('scroll',function(){
-  var n=document.getElementById('topNav');
-  if(n){n.classList.toggle('top-nav-scrolled',window.scrollY>20);}
-});
-
-function toggleDark(){
-  var h=document.documentElement;h.classList.toggle('dark');
-  var d=h.classList.contains('dark');
-  localStorage.setItem('theme',d?'dark':'light');
-  document.getElementById('darkBtn').innerHTML=d?'<i class="ri-sun-line"></i>':'<i class="ri-moon-line"></i>';
-}
-
-function toggleMenu(){
-  var m=document.getElementById('topNavMenu');m.classList.toggle('open');
-  document.getElementById('menuBtn').innerHTML=m.classList.contains('open')?'<i class="ri-close-line"></i>':'<i class="ri-menu-3-line"></i>';
-}
-
-if(document.documentElement.classList.contains('dark')){
-  document.getElementById('darkBtn').innerHTML='<i class="ri-sun-line"></i>';
-}
-
-
 (function(){
-  
-  document.querySelectorAll('a[data-type="mail"]').forEach(function(a){
-    var h = a.getAttribute('href');
-    if(h && h.indexOf('mailto:')!==0 && h.indexOf('http')!==0) a.href='mailto:'+h;
-  });
-  if('ontouchstart' in window||navigator.maxTouchPoints>0)return;
-  document.documentElement.classList.add('cursor-custom');
-  var d=document.createElement('div');d.id='cursor-dot';
-  var r=document.createElement('div');r.id='cursor-ring';
-  document.body.appendChild(d);document.body.appendChild(r);
-  var mx=0,my=0,rx=0,ry=0,vis=false;
-  document.addEventListener('mousemove',function(e){
-    mx=e.clientX;my=e.clientY;
-    d.style.left=mx+'px';d.style.top=my+'px';
-    if(!vis){vis=true;rx=mx;ry=my;r.style.left=rx+'px';r.style.top=ry+'px';d.classList.remove('hide');r.classList.remove('hide');}
-  });
-  !function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(anim)}();
-  document.addEventListener('mouseleave',function(){d.classList.add('hide');r.classList.add('hide');vis=false;});
-  document.addEventListener('mouseenter',function(){d.classList.remove('hide');r.classList.remove('hide');});
-  document.addEventListener('mouseover',function(e){
-    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
-    if(t){d.classList.add('hover');r.classList.add('hover');}
-  });
-  document.addEventListener('mouseout',function(e){
-    var t=e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
-    if(t){d.classList.remove('hover');r.classList.remove('hover');}
-  });
-  
-  var fishTimer=null;
-  document.addEventListener('keydown',function(e){
-    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.isContentEditable)return;
-    if(e.key.length!==1||e.ctrlKey||e.metaKey)return;
-    d.classList.add('fish');r.classList.add('fish');d.textContent='🐟';
-    clearTimeout(fishTimer);
-    fishTimer=setTimeout(function(){d.classList.remove('fish');r.classList.remove('fish');d.textContent='';},800);
-  });
+  var t = localStorage.getItem('theme');
+  if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme:dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
 })();
 </script>
 
@@ -245,6 +229,37 @@ if(document.documentElement.classList.contains('dark')){
             </div>
 
             
+            <div class="post-kawaii" id="postKawaii"></div>
+            <script>
+            (function(){
+              var phrases=[
+                '🐟 喵~看完啦！奖励一条小鱼干！',
+                '🌸 你居然读完了，了不起！',
+                '🍡 读完这篇文章的你，今天一定超幸运！',
+                '✨ 又发现了一个认真学习的好孩子~',
+                '🐱 喵呜~主人真棒！全部看完啦！',
+                '🌙 已经很厉害了，休息一下吧~',
+                '🍀 今日阅读成就达成！点击撒花~',
+                '💫 这篇这么长你都能看完，不愧是你！',
+                '🎐 呼~一阵微风把这篇好文吹到了你面前',
+                '🍩 奖励自己一个甜甜圈吧，值得！',
+                '🌟 看到这里的都是天选之人！',
+                '🐰 蹦蹦跳跳地恭喜你看完啦~',
+                '🎀 认真读书的你，世界第一可爱！',
+                '🌻 你就像向日葵一样闪闪发光！',
+                '🍜 辛苦了！去吃碗面补充能量吧~'
+              ];
+              var el=document.getElementById('postKawaii');
+              el.textContent=phrases[Math.floor(Math.random()*phrases.length)];
+              el.addEventListener('click',function(){
+                el.textContent=phrases[Math.floor(Math.random()*phrases.length)];
+                el.classList.add('bounce');
+                setTimeout(function(){el.classList.remove('bounce');},400);
+              });
+            })();
+            </script>
+
+            
             <div class="share-section">
                 <span class="share-label"><i class="ri-share-forward-line"></i> 分享</span>
                 <span class="share-btn share-twitter" onclick="window.open('https://twitter.com/share?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','width=615,height=505')" title="Twitter"><i class="ri-twitter-line"></i></span>
@@ -256,8 +271,10 @@ if(document.documentElement.classList.contains('dark')){
             
             <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="/post/sui-bian-xie-dian-shi-me/"><h3 class="post-title">随便写点什么...</h3></a>
+                <a href="/post/wu-liao-zen-me-ban/"><h3 class="post-title">无聊怎么办</h3></a>
             </div>
+            
+            
             
             
             
@@ -361,27 +378,39 @@ Waline.init({
 
     <script>
      
-    var mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-    if (mainNavLinks.length) {
-        window.addEventListener("scroll", function() {
-            var fromTop = window.scrollY;
-            mainNavLinks.forEach(function(link, i) {
-                var section = document.getElementById(decodeURI(link.hash).substring(1));
-                var next = mainNavLinks[i + 1];
-                var nextSection = next ? document.getElementById(decodeURI(next.hash).substring(1)) : null;
-                if (section && section.offsetTop <= fromTop) {
-                    if (!nextSection || nextSection.offsetTop > fromTop) link.classList.add("current");
-                    else link.classList.remove("current");
-                } else link.classList.remove("current");
-            });
+    (function(){
+        var mainNavLinks = document.querySelectorAll('.markdownIt-TOC a');
+        var backTop = document.getElementById('backTop');
+        if (backTop) backTop.style.display = 'none';
+        var ticking = false;
+
+        window.addEventListener('scroll', function(){
+            if (!ticking) {
+                requestAnimationFrame(function(){
+                    var fromTop = window.scrollY;
+
+                    
+                    if (mainNavLinks.length) {
+                        mainNavLinks.forEach(function(link, i) {
+                            var section = document.getElementById(decodeURI(link.hash).substring(1));
+                            var next = mainNavLinks[i + 1];
+                            var nextSection = next ? document.getElementById(decodeURI(next.hash).substring(1)) : null;
+                            if (section && section.offsetTop <= fromTop) {
+                                if (!nextSection || nextSection.offsetTop > fromTop) link.classList.add('current');
+                                else link.classList.remove('current');
+                            } else link.classList.remove('current');
+                        });
+                    }
+
+                    
+                    if (backTop) backTop.style.display = fromTop > 200 ? 'flex' : 'none';
+
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
-    }
-     
-    window.addEventListener("scroll", function(){
-        var bt = document.getElementById("backTop");
-        if(bt) bt.style.display = window.scrollY > 200 ? "flex" : "none";
-    });
-    if(document.getElementById("backTop")) document.getElementById("backTop").style.display = "none";
+    })();
     </script>
 <script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>

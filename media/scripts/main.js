@@ -1,4 +1,168 @@
-﻿/* ===== Copy to clipboard ===== */
+﻿/* ===== Nav scroll effect ===== */
+(function(){
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking) {
+      requestAnimationFrame(function(){
+        var n = document.getElementById('topNav');
+        if (n) { n.classList.toggle('top-nav-scrolled', window.scrollY > 20); }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+/* ===== Dark mode toggle ===== */
+window.toggleDark = function(){
+  var h = document.documentElement;
+  h.classList.toggle('dark');
+  var d = h.classList.contains('dark');
+  localStorage.setItem('theme', d ? 'dark' : 'light');
+  var btn = document.getElementById('darkBtn');
+  if (btn) {
+    btn.innerHTML = d ? '<i class="ri-sun-line"></i>' : '<i class="ri-moon-line"></i>';
+    btn.setAttribute('aria-label', d ? '切换到亮色主题' : '切换到暗色主题');
+  }
+};
+// 初始化暗色模式图标
+if (document.documentElement.classList.contains('dark')) {
+  var darkBtn = document.getElementById('darkBtn');
+  if (darkBtn) { darkBtn.innerHTML = '<i class="ri-sun-line"></i>'; }
+}
+
+/* ===== Mobile menu toggle ===== */
+window.toggleMenu = function(){
+  var m = document.getElementById('topNavMenu');
+  var btn = document.getElementById('menuBtn');
+  if (!m) return;
+  m.classList.toggle('open');
+  var open = m.classList.contains('open');
+  btn.innerHTML = open ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-3-line"></i>';
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', open ? '收起导航菜单' : '展开导航菜单');
+  // 菜单打开时点击外部自动关闭
+  if (open) {
+    setTimeout(function(){
+      document.addEventListener('click', function handler(e){
+        if (!m.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+          m.classList.remove('open');
+          btn.innerHTML = '<i class="ri-menu-3-line"></i>';
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', '展开导航菜单');
+          document.removeEventListener('click', handler);
+        }
+      });
+    }, 10);
+  }
+};
+
+/* ===== Email link fix ===== */
+(function(){
+  document.querySelectorAll('a[data-type="mail"]').forEach(function(a){
+    var h = a.getAttribute('href');
+    if (h && h.indexOf('mailto:') !== 0 && h.indexOf('http') !== 0) {
+      a.href = 'mailto:' + h;
+    }
+  });
+})();
+
+/* ===== Mouse cursor effect ===== */
+(function(){
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+  document.documentElement.classList.add('cursor-custom');
+
+  var d = document.createElement('div'); d.id = 'cursor-dot';
+  var r = document.createElement('div'); r.id = 'cursor-ring';
+  document.body.appendChild(d); document.body.appendChild(r);
+
+  var mx = 0, my = 0, rx = 0, ry = 0, vis = false;
+  var rafId;
+
+  function onMove(e) {
+    if (!rafId) {
+      rafId = requestAnimationFrame(function(){
+        mx = e.clientX; my = e.clientY;
+        d.style.left = mx + 'px'; d.style.top = my + 'px';
+        if (!vis) {
+          vis = true; rx = mx; ry = my;
+          r.style.left = rx + 'px'; r.style.top = ry + 'px';
+          d.classList.remove('hide'); r.classList.remove('hide');
+        }
+        rafId = null;
+      });
+    }
+  }
+  document.addEventListener('mousemove', onMove, { passive: true });
+
+  (function anim(){
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    r.style.left = rx + 'px'; r.style.top = ry + 'px';
+    requestAnimationFrame(anim);
+  })();
+
+  document.addEventListener('mouseleave', function(){ d.classList.add('hide'); r.classList.add('hide'); vis = false; });
+  document.addEventListener('mouseenter', function(){ d.classList.remove('hide'); r.classList.remove('hide'); });
+
+  document.addEventListener('mouseover', function(e){
+    var t = e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if (t) { d.classList.add('hover'); r.classList.add('hover'); }
+  });
+  document.addEventListener('mouseout', function(e){
+    var t = e.target.closest('a,button,input,textarea,select,[role="button"],[contenteditable]');
+    if (t) { d.classList.remove('hover'); r.classList.remove('hover'); }
+  });
+
+  /* 打字时变🐟 */
+  var fishTimer = null;
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key.length !== 1 || e.ctrlKey || e.metaKey) return;
+    d.classList.add('fish'); r.classList.add('fish'); d.textContent = '🐟';
+    clearTimeout(fishTimer);
+    fishTimer = setTimeout(function(){ d.classList.remove('fish'); r.classList.remove('fish'); d.textContent = ''; }, 800);
+  });
+})();
+
+/* ===== Mouse trail particles (throttled) ===== */
+(function(){
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+  var trailColors = ['#ff6b6b','#ffd93d','#6bcbff','#a5b4fc','#ff8aeb','#51cf66','#ff9f43','#f368e0'];
+  var trailParticles = [], trailMax = 20;
+  var lastTrail = 0;
+
+  document.addEventListener('mousemove', function(e){
+    var now = Date.now();
+    if (now - lastTrail < 30) return; // throttle to ~33fps
+    lastTrail = now;
+
+    var p = document.createElement('div'); p.className = 'cursor-trail';
+    var c = trailColors[Math.floor(Math.random() * trailColors.length)];
+    var s = 2 + Math.random() * 3;
+    p.style.cssText = 'position:fixed;pointer-events:none;z-index:99997;left:' + (e.clientX - s/2) + 'px;top:' + (e.clientY - s/2) + 'px;width:' + s + 'px;height:' + s + 'px;border-radius:50%;background:' + c + ';opacity:' + (0.5 + Math.random() * 0.5) + ';box-shadow:0 0 ' + (s*2) + 'px ' + c + ';';
+    document.body.appendChild(p);
+    trailParticles.push(p);
+    if (trailParticles.length > trailMax) {
+      var old = trailParticles.shift();
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+    }
+    setTimeout(function(){
+      p.style.opacity = '0'; p.style.transform = 'scale(0)';
+      p.style.transition = 'opacity .6s,transform .6s';
+    }, 100);
+    setTimeout(function(){ if (p.parentNode) p.parentNode.removeChild(p); }, 700);
+  }, { passive: true });
+})();
+
+/* ===== Dynamic post-card animation delay ===== */
+(function(){
+  var cards = document.querySelectorAll('.post-card.animated, .post-card.fadeInUp');
+  cards.forEach(function(card, i){
+    card.style.animationDelay = (i * 0.05) + 's';
+  });
+})();
+
+/* ===== Copy to clipboard ===== */
 function copyToClipboard(t){
   if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t);
   var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.left='-9999px';
@@ -22,6 +186,14 @@ function addLineNums(pre){
 function enhanceCode(){
   var md=document.querySelector('.post-content,.markdown');
   var pres=md?md.querySelectorAll('pre'):[];
+
+  /* 为 markdown 内容中的图片添加懒加载 */
+  if (md) {
+    md.querySelectorAll('img:not([loading])').forEach(function(img){
+      img.setAttribute('loading', 'lazy');
+      img.setAttribute('decoding', 'async');
+    });
+  }
 
   /* PhotoSwipe */
   var pswp=document.querySelector('.pswp');
@@ -71,7 +243,7 @@ function enhanceCode(){
   if(md){
     md.querySelectorAll('h2,h3,h4').forEach(function(h){
       if(h.querySelector('.heading-anchor'))return;
-      var id=h.id||h.textContent.replace(/[^\w涓€-榭縘+/g,'-').replace(/(^-|-$)/g,'').toLowerCase();
+      var id=h.id||h.textContent.replace(/[^\w一-鿿]+/g,'-').replace(/(^-|-$)/g,'').toLowerCase();
       if(!id)return;h.id=id;
       var a=document.createElement('a');a.className='heading-anchor';a.href='#'+id;a.textContent='#';
       a.addEventListener('click',function(e){
@@ -82,8 +254,33 @@ function enhanceCode(){
     });
   }
 };
-document.addEventListener('DOMContentLoaded',enhanceCode);
-if(typeof Prism!=='undefined'){var _p=Prism.highlightAll;Prism.highlightAll=function(){_p.call(this);enhanceCode();};}
+document.addEventListener('DOMContentLoaded', enhanceCode);
+
+// Prism 增强：等待 Prism 加载完毕后重新处理代码块
+if (typeof Prism !== 'undefined') {
+  // Prism 已同步加载，直接包装
+  var _origHighlightAll = Prism.highlightAll;
+  Prism.highlightAll = function() {
+    var result = _origHighlightAll.apply(this, arguments);
+    enhanceCode();
+    return result;
+  };
+} else {
+  // Prism 异步加载后触发增强
+  var _prismCheck = setInterval(function(){
+    if (typeof Prism !== 'undefined') {
+      clearInterval(_prismCheck);
+      var _orig = Prism.highlightAll;
+      Prism.highlightAll = function() {
+        var result = _orig.apply(this, arguments);
+        enhanceCode();
+        return result;
+      };
+    }
+  }, 200);
+  // 最多等 10 秒
+  setTimeout(function(){ clearInterval(_prismCheck); }, 10000);
+}
 
 /* ===== MEOW easter egg ===== */
 (function(){
