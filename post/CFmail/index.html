@@ -1,96 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Gridea Pro 1.2.2">
+    <title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） · shundebo的图书馆</title>
+    <meta name="description" content="">
     
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content="Gridea Pro 1.2.2">
-<title>新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1783526876">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） | shundebo的图书馆 - Atom Feed" href="/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700" media="print" onload="this.media='all'">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta property="og:type" content="article">
+<meta property="og:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://blog.shundebo.top/post/CFmail/">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Normal.min.css" media="print" onload="this.media='all'">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）">
+<meta name="twitter:description" content="">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "shundebo的图书馆",
-  "description": "图书馆",
-  "url": "https:\/\/blog.shundebo.top"
-}
-</script>
-
-<script>
-
-document.addEventListener('DOMContentLoaded',function(){
-  function setBg(u){
-    document.body.style.backgroundImage='url('+u+')';
-    document.body.style.backgroundSize='cover';
-    document.body.style.backgroundPosition='center';
-    document.body.style.backgroundAttachment='fixed';
-    document.body.classList.add('has-bing-bg');
-  }
-  var c = localStorage.getItem('wow_bg'), t = new Date().toDateString();
-  if(c && c.indexOf(t+'|')===0) {
-    setBg(c.slice(t.length+1));
-    return;
-  }
-  fetch('https://bing.biturl.top/?resolution=1920&format=json')
-    .then(function(r){return r.json()})
-    .then(function(d){
-      if(d&&d.url){
-        var u = d.url.replace(/^http:/,'https:');
-        setBg(u); localStorage.setItem('wow_bg',t+'|'+u);
-      }
-    })
-    .catch(function(){});
-});
-</script>
-
-
-
-    <meta name="description" content="" />
-    <meta name="keywords" content="cloudflare" />
-    <meta property="og:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo的图书馆">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="/post/CFmail/">
-    <meta property="og:image" content="https://blog.shundebo.top/images/avatar.png">
-    <meta name="twitter:title" content="新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发） - shundebo的图书馆">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="/post/CFmail/">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）",
-      "description": "",
-      "datePublished": "2025-03-02 10:54:23 \u002b0800 CST",
-      "url": "\/post\/CFmail\/",
-      "author": {
-        "@type": "Person",
-        "name": "shundebo的图书馆"
-      }
-      
-    }
-    </script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    
-
-    
-    <link rel="stylesheet" href="/media/css/prism-atom-dark.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        :root {
+            --primary-color: #007BFF;
+            --accent-color: #FFA726;
+        }
+    </style>
     
 <meta name="description" content="KImi的~~在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。 企业邮箱的优势： 提升专业形象：使用企业邮箱（如yourname@yourdomain&amp;hellip;">
 <meta name="keywords" content="shundebo">
@@ -112,104 +46,91 @@ document.addEventListener('DOMContentLoaded',function(){
 <meta name="twitter:creator" content="@shundebo__">
 <meta name="msvalidate.01" content="6E0F0238B2AB5D777FEA4D5A20B9D5DE" />
 </head>
-<body>
-    <div class="main">
-        <div class="main-content">
+<body class="post-detail">
+    <header class="site-header">
+    <div class="container header-inner">
+        <a class="site-logo" href="/">
             
+                <span class="site-logo-text">shundebo的图书馆</span>
+            
+        </a>
 
-<a href="#app" class="skip-to-content" aria-label="跳到主要内容">跳到主要内容</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="打开菜单">
+            <span></span><span></span><span></span>
+        </button>
 
-
-<div class="top-nav" id="topNav">
-  <div class="top-nav-inner">
-    <nav class="top-nav-menu" id="topNavMenu">
-      
-      <a href="/" target="" class="top-nav-link">首页</a>
-      
-      <a href="/memos" target="" class="top-nav-link">闪念</a>
-      
-      <a href="/?page=links" target="" class="top-nav-link">友链</a>
-      
-      <a href="/tags" target="" class="top-nav-link">标签</a>
-      
-      <a href="/archives" target="" class="top-nav-link">归档</a>
-      
-      <a href="/post/about" target="" class="top-nav-link">关于</a>
-      
-      <a href="/atom.xml" target="_blank" class="top-nav-link">RSS</a>
-    </nav>
-    <div class="top-nav-actions">
-      <a href="javascript:;" class="top-nav-icon" onclick="toggleDark()" id="darkBtn" title="切换主题" aria-label="切换暗色/亮色主题">
-        <i class="ri-moon-line"></i>
-      </a>
-      <a href="javascript:;" class="top-nav-icon md-hide" onclick="toggleMenu()" id="menuBtn" title="菜单" aria-label="展开导航菜单" aria-expanded="false" role="button">
-        <i class="ri-menu-3-line"></i>
-      </a>
+        <nav class="site-nav" id="site-nav">
+            <ul class="nav-links">
+                
+                    <li class="nav-item nav-item--home">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/memos">闪念</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?page=links">友链</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tags">标签</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/archives">归档</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/post/about">关于</a>
+                    </li>
+                
+            </ul>
+            <div class="nav-actions">
+                
+                <button class="icon-btn" id="search-toggle" aria-label="搜索">&#128269;</button>
+                
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="切换主题">&#9789;</button>
+            </div>
+        </nav>
     </div>
-  </div>
-</div>
+</header>
 
 
-<div class="site-header">
-    <a href="/">
-        <img class="avatar" src="/images/avatar.png?v=1783526876" alt="头像" loading="lazy">
-    </a>
-    <h1 class="site-title">shundebo的图书馆</h1>
-    <p class="site-description">图书馆</p>
+    <main class="site-main">
+        
+<div class="container">
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）</h1>
+        <div class="post-meta">
+            <time class="post-date" datetime="2025-03-02T10:54:23+08:00">2025-03-02</time>
+            
+            <span class="post-updated">更新于 2026-06-05</span>
+            
+            
+            <span class="post-reading">12 分钟阅读</span>
+            
+        </div>
+        
+        <div class="post-taxonomies">
+            
+            
+                
+                    <a class="tag" href="/tag/cloudflare/">cloudflare</a>
+                
+            
+        </div>
+        
+    </header>
+
     
 
-<div class="social-container">
     
-    <span class="social-label">炸死我</span>
-    
-    
-    
-    <a href="mailto:shundebo@shundebo.top" target="_blank" class="social-icon" data-type="mail"><i class="ri-mail-line"></i></a>
-    
-    
-    <a href="https://github.com/shundebo" target="_blank" class="social-icon"><i class="ri-github-line"></i></a>
-    
-    
-    <a href="https://x.com/shundebo__" target="_blank" class="social-icon"><i class="ri-twitter-line"></i></a>
-    
-    
-    
-    
-    
-    <a href="https://t.me/aziwaninndroichi" target="_blank" class="social-icon"><i class="ri-telegram-line"></i></a>
-    
-    
-    
-    
-    
-</div>
 
-
-</div>
-
-<script>
-
-(function(){
-  var t = localStorage.getItem('theme');
-  if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme:dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
-})();
-</script>
-
-            <div class="post-detail">
-                <article class="post">
-                    <h2 class="post-title">新站第一章：用任意绑定于cloudflare制作免费企业邮箱（可收发）</h2>
-                    <div class="post-info">
-                        <span>2025-03-02</span>
-                        <span>12 分钟阅读</span>
-                        
-                        <a href="/tag/cloudflare/" class="post-tag"># cloudflare</a>
-                        
-                    </div>
-                    
-                    <div class="post-content-wrapper">
-                        <div class="post-content" v-pre><p>KImi的<del>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
+    <div class="post-content">
+        <p>KImi的<del>在创业或个人项目中，拥有一个专业的企业邮箱不仅能提升品牌形象，还能提高沟通效率。然而，传统的企业邮箱服务往往价格昂贵，对于预算有限的个人和初创团队来说并不友好。好消息是，借助Cloudflare和一些开源工具，我们可以轻松搭建一个免费且功能强大的企业邮箱系统。今天，我将带你一步步实现这一目标。<br />
 企业邮箱的优势：<br />
 提升专业形象：使用企业邮箱（如yourname@yourdomain.com）可以让你在客户眼中显得更专业、更可信。<br />
 集中管理：方便团队协作，所有邮件都集中在一个域名下，便于分类和管理。<br />
@@ -377,191 +298,95 @@ async function handleRequest(request) {
 点击访问<br />
 发送后错误信息如果是undefine就算成功了！！！<br />
 完成<img src="https://blog.shundebo.top/post-images/1740891446056.png" alt="" /></p>
-</div>
-                        <div class="toc-container"></div>
-                    </div>
-                </article>
-            </div>
 
-            
-            <div class="post-kawaii" id="postKawaii"></div>
-            <script>
-            (function(){
-              var phrases=[
-                '🐟 喵~看完啦！奖励一条小鱼干！',
-                '🌸 你居然读完了，了不起！',
-                '🍡 读完这篇文章的你，今天一定超幸运！',
-                '✨ 又发现了一个认真学习的好孩子~',
-                '🐱 喵呜~主人真棒！全部看完啦！',
-                '🌙 已经很厉害了，休息一下吧~',
-                '🍀 今日阅读成就达成！点击撒花~',
-                '💫 这篇这么长你都能看完，不愧是你！',
-                '🎐 呼~一阵微风把这篇好文吹到了你面前',
-                '🍩 奖励自己一个甜甜圈吧，值得！',
-                '🌟 看到这里的都是天选之人！',
-                '🐰 蹦蹦跳跳地恭喜你看完啦~',
-                '🎀 认真读书的你，世界第一可爱！',
-                '🌻 你就像向日葵一样闪闪发光！',
-                '🍜 辛苦了！去吃碗面补充能量吧~'
-              ];
-              var el=document.getElementById('postKawaii');
-              el.textContent=phrases[Math.floor(Math.random()*phrases.length)];
-              el.addEventListener('click',function(){
-                el.textContent=phrases[Math.floor(Math.random()*phrases.length)];
-                el.classList.add('bounce');
-                setTimeout(function(){el.classList.remove('bounce');},400);
-              });
-            })();
-            </script>
-
-            
-            <div class="share-section">
-                <span class="share-label"><i class="ri-share-forward-line"></i> 分享</span>
-                <span class="share-btn share-twitter" onclick="window.open('https://twitter.com/share?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','width=615,height=505')" title="Twitter"><i class="ri-twitter-line"></i></span>
-                <span class="share-btn share-weibo" onclick="window.open('https://service.weibo.com/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','width=615,height=505')" title="微博"><i class="ri-weibo-line"></i></span>
-                <span class="share-btn share-telegram" onclick="window.open('https://telegram.me/share/url?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'_blank','width=615,height=505')" title="Telegram"><i class="ri-telegram-line"></i></span>
-                <span class="share-btn share-link" onclick="var _=this;copyToClipboard(location.href);_.querySelector('i').className='ri-check-line';setTimeout(function(){_.querySelector('i').className='ri-link-m'},2000)" title="复制链接"><i class="ri-link-m"></i></span>
-            </div>
-
-            
-            
-            
-            
-            
-            <div id="waline-comment" style="padding:16px 0;"></div>
-            
-            
-<div class="site-footer">
-    
-    <div class="footer-meta">
-        本站使用 <a href="https://www.jsdelivr.com/package/npm/misans" target="_blank" rel="noopener">小米 MiSans</a> 字体
-        <span class="sep">·</span>
-        <a href="https://icp.gov.moe/?keyword=20258222" target="_blank">萌ICP备20258222号</a>
-        <span class="sep">·</span>
-        <a class="rss" href="/atom.xml" target="_blank"><i class="ri-rss-line"></i></a>
-    </div>
-</div>
-
-        </div>
     </div>
 
     
-    <span class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="backTop"><i class="ri-arrow-up-line"></i></span>
-
-    
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-            <div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div>
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div>
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                    <div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div>
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                <div class="pswp__caption"><div class="pswp__caption__center"></div></div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-    <script src="/media/scripts/main.js"></script>
-
-    
-    <script src="/media/prism.js"></script>
-    <script>Prism.highlightAll()</script>
+    <nav class="post-nav">
+        
+        <a class="post-nav-item post-nav-prev" href="/post/agp-v202510/">
+            <span class="post-nav-label">&laquo; 上一篇</span>
+            <span class="post-nav-title">AGP V2025.10</span>
+        </a>
+        
+        
+    </nav>
     
 
     
-    
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
-<style>
-#waline-comment {
-  --waline-border: 1px solid #e5e7eb;
-  --waline-box-shadow: 0 2px 12px rgba(0,0,0,.04);
-  --waline-color: #333;
-  --waline-bgcolor: #fff;
-  --waline-bgcolor-light: #f9fafb;
-  --waline-active-color: #667eea;
-  --waline-theme-color: #667eea;
-  --waline-text-color: #666;
-  --waline-info-bgcolor: #f5f5f5;
-  --waline-info-text: #aaa;
-  --waline-font-size: 14px;
-  --waline-border-radius: 8px;
-}
-html.dark #waline-comment {
-  --waline-border: 1px solid #374151;
-  --waline-color: #d1d5db;
-  --waline-bgcolor: rgba(55,65,81,.8);
-  --waline-bgcolor-light: rgba(75,85,99,.5);
-  --waline-active-color: #a5b4fc;
-  --waline-theme-color: #a5b4fc;
-  --waline-text-color: #9ca3af;
-  --waline-info-bgcolor: #374151;
-  --waline-info-text: #6b7280;
-}
-</style>
-<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-<script>
-Waline.init({
-  el: '#waline-comment',
-  serverURL: 'https:\/\/blogwaline-gamma.vercel.app',
-  lang: 'zh-CN',
-  pageSize: parseInt('10', 10),
-  avatar: 'mp',
-  emoji: ['https://unpkg.com/@waline/emojis@1.4.0/tw-emoji'],
-  search: false,
-  reaction: true,
-  visitor: true,
-  dark: 'html[class="dark"]',
-})
-</script>
 
-    
 
-    <script>
-     
-    (function(){
-        var mainNavLinks = document.querySelectorAll('.markdownIt-TOC a');
-        var backTop = document.getElementById('backTop');
-        if (backTop) backTop.style.display = 'none';
-        var ticking = false;
 
-        window.addEventListener('scroll', function(){
-            if (!ticking) {
-                requestAnimationFrame(function(){
-                    var fromTop = window.scrollY;
 
-                    
-                    if (mainNavLinks.length) {
-                        mainNavLinks.forEach(function(link, i) {
-                            var section = document.getElementById(decodeURI(link.hash).substring(1));
-                            var next = mainNavLinks[i + 1];
-                            var nextSection = next ? document.getElementById(decodeURI(next.hash).substring(1)) : null;
-                            if (section && section.offsetTop <= fromTop) {
-                                if (!nextSection || nextSection.offsetTop > fromTop) link.classList.add('current');
-                                else link.classList.remove('current');
-                            } else link.classList.remove('current');
-                        });
-                    }
 
-                    
-                    if (backTop) backTop.style.display = fromTop > 200 ? 'flex' : 'none';
 
-                    ticking = false;
+<section class="post-comments comment-section">
+    <h3 class="comments-title">评论</h3>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client/dist/waline.css">
+    <div id="waline"></div>
+    <script type="module">
+        (function () {
+            var serverURL = "https://blogwaline-gamma.vercel.app";
+            import('https://unpkg.com/@waline/client/dist/waline.js').then(function (mod) {
+                var client = mod.init || mod.Waline || mod.default;
+                if (typeof client !== 'function') { return; }
+                client({
+                    el: '#waline',
+                    serverURL: serverURL,
+                    path: window.location.pathname,
+                    lang: 'zh-CN',
+                    dark: document.documentElement.getAttribute('data-theme') === 'dark'
                 });
-                ticking = true;
-            }
-        });
-    })();
+            }).catch(function (e) {
+                console.error('Waline 初始化失败:', e);
+            });
+        })();
     </script>
-<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: WOW v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</section>
+
+
+
+</article>
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="footer-logo">shundebo的图书馆</span>
+                
+                <p class="footer-desc">图书馆</p>
+                
+            </div>
+            <div class="footer-actions">
+                
+                
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2026 shundebo的图书馆 · 源自 schlen.top 的设计
+            </p>
+            
+        </div>
+    </div>
+</footer>
+
+
+    <div class="modal" id="search-modal" hidden>
+        <div class="modal-overlay" id="search-overlay"></div>
+        <div class="modal-panel">
+            <input type="search" id="search-input" placeholder="搜索文章…" autocomplete="off">
+            <ul class="search-results" id="search-results"></ul>
+        </div>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+    
+    
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: schlen v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
