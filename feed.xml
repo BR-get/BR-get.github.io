@@ -43,41 +43,351 @@
       <link>https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/</link>
       <guid isPermaLink="true">https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/</guid>
       <pubDate>Mon, 06 Apr 2026 11:40:34 +0800</pubDate>
-      <description><![CDATA[<h1 id="jvav--">JVAV 编程语言介绍 🐣</h1>
-<p><strong>JVAV</strong> 是一种独特的倒序编程语言，其设计理念是将所有函数名颠倒书写，为编程带来全新的思维体验。</p>
-<h2 id="heading">语言特性</h2>
+      <description><![CDATA[<h1 id="jvav---">JVAV — 脑波原生开发平台完全介绍喵 🐾</h1>
+<blockquote>
+<p>一个纯三剑客（HTML/CSS/JS）站点 + 一个 Python 实现的「倒序」编程语言 + 一个 GitHub 包管理器喵。<br />
+当前发行：<strong>JVAV DK 27 v6</strong> · 状态：✅ Production Ready · Turing 完备喵。</p>
+</blockquote>
+<hr />
+<h2 id="1-">1. 这是什么喵？</h2>
+<p><strong>JVAV</strong> 是一门「脑波原生」编程语言喵：所有 <code>.jvav</code> 脚本都由 <code>src/JvavDK27.py</code> 里的运行时解释执行，把 Python 的内置函数<strong>整个倒过来念</strong>，让你在熟悉的语义里体验完全陌生的手感喵。</p>
+<p>最妙的地方在于——它可不是玩具喵。DK27 v6 已经是 <strong>Turing 完备</strong>的喵：</p>
 <ul>
-<li><strong>Turing 完备</strong> - 支持完整的计算能力</li>
-<li><strong>160+ 倒序函数</strong> - 丰富的内置函数库</li>
-<li><strong>完整递归支持</strong> - 支持 factorial、fibonacci 等递归算法</li>
-<li><strong>多行代码块</strong> - 完整支持 if/elif/else/try/except 多行语句</li>
-<li><strong>循环结构</strong> - 支持 while 和 for 循环，包括嵌套循环</li>
-<li><strong>推导式语法</strong> - 支持列表/字典/集合推导式</li>
-<li><strong>插件系统</strong> - 提供 7 个内置插件扩展功能</li>
-<li><strong>UTF-8 支持</strong> - 完善的 Unicode 支持</li>
-<li><strong>沙箱安全</strong> - 安全可靠的运行环境</li>
-</ul>
-<h2 id="heading-1">核心特性一览</h2>
-<pre><code>Turing 完备: ✅
-160+ 倒序函数: ✅
-完整递归支持: ✅
-多行代码块: ✅
-插件系统: ✅ (7个内置插件)
-UTF-8 支持: ✅
-沙箱安全: ✅
-</code></pre>
-<h2 id="heading-2">快速开始</h2>
-<pre><code class="language-jvav"># 欢迎使用 JVAV
-输出(&quot;你好，JVAV!&quot;)
-</code></pre>
-<h2 id="heading-3">了解更多</h2>
-<ul>
-<li><a href="https://jvav-with-u.top/downloads/index.html">下载 JVAV</a></li>
-<li><a href="https://jvav-with-u.top/changelog.html">查看更新日志</a></li>
-<li><a href="https://jvav-with-u.top/help.html">快速上手指南</a></li>
+<li>✅ 160+ 倒序内置函数（覆盖标准库喵）</li>
+<li>✅ 完整递归（factorial / fibonacci 都没问题喵）</li>
+<li>✅ 全部控制流：<code>if/elif/else</code>、<code>try/except</code>、<code>for</code>、<code>while</code>、嵌套喵</li>
+<li>✅ 函数定义与类定义喵</li>
+<li>✅ 插件系统 + 包管理器自动加载喵</li>
+<li>✅ 列表 / 字典 / 集合推导式喵</li>
+<li>✅ 完善 UTF-8 支持，中文输出无压力喵</li>
+<li>✅ SafeEvaluator 沙箱 + AST 安全校验喵</li>
 </ul>
 <hr />
-<p><em>JVAV - 脑波原生编程语言 | BR inc. 2018-2026</em></p>
+<h2 id="2-jvav-">2. 倒序命名：JVAV 的灵魂喵</h2>
+<p>规则只有一个：<strong>把名字照镜子念一遍喵</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>Python 原名</th>
+<th>JVAV 倒序名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>print</code></td>
+<td><code>tnirp</code></td>
+<td>输出喵</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td><code>tupni</code></td>
+<td>输入喵</td>
+</tr>
+<tr>
+<td><code>len</code></td>
+<td><code>nel</code></td>
+<td>长度喵</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td><code>egnar</code></td>
+<td>范围喵</td>
+</tr>
+<tr>
+<td><code>str</code></td>
+<td><code>rts</code></td>
+<td>转字符串喵</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td><code>tni</code></td>
+<td>转整数喵</td>
+</tr>
+<tr>
+<td><code>dict</code></td>
+<td><code>tcid</code></td>
+<td>字典喵</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><code>tsal</code></td>
+<td>列表喵</td>
+</tr>
+<tr>
+<td><code>sum</code></td>
+<td><code>mus</code></td>
+<td>求和喵（注意是 <code>mus</code>，不是 <code>nus</code> 喵！）</td>
+</tr>
+<tr>
+<td><code>max</code> / <code>min</code></td>
+<td><code>xam</code> / <code>nim</code></td>
+<td>最大 / 最小喵</td>
+</tr>
+<tr>
+<td><code>sorted</code></td>
+<td><code>detros</code></td>
+<td>排序喵</td>
+</tr>
+<tr>
+<td><code>append</code></td>
+<td><code>dneppa</code></td>
+<td>追加喵</td>
+</tr>
+<tr>
+<td><code>enumerate</code></td>
+<td><code>pocE</code></td>
+<td>枚举喵</td>
+</tr>
+<tr>
+<td><code>map</code> / <code>filter</code></td>
+<td><code>paM</code> / <code>refilF</code></td>
+<td>映射 / 过滤喵</td>
+</tr>
+</tbody>
+</table>
+<p>关键字也一并倒序喵：</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>JVAV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>if</code> / <code>else</code></td>
+<td><code>fi</code> / <code>esle</code></td>
+</tr>
+<tr>
+<td><code>for</code> / <code>while</code></td>
+<td><code>rof</code> / <code>elihw</code></td>
+</tr>
+<tr>
+<td><code>try</code> / <code>except</code></td>
+<td><code>yrt</code> / <code>tpecxe</code></td>
+</tr>
+<tr>
+<td><code>in</code> / <code>not</code> / <code>return</code></td>
+<td><code>ni</code> / <code>ton</code> / <code>nruter</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>小贴士喵：关键字只在<strong>整词</strong>时替换，所以字符串里写 <code>file</code> 不会被误伤喵。</p>
+</blockquote>
+<hr />
+<h2 id="3-">3. 快速开始喵</h2>
+<h3 id="heading">运行一行代码喵</h3>
+<pre><code class="language-powershell">python src\JvavDK27.py -c &quot;tnirp('你好，JVAV 喵')&quot;
+</code></pre>
+<h3 id="heading-1">运行一个文件喵</h3>
+<pre><code class="language-powershell">python src\JvavDK27.py -f examples\two_sum.jvav
+</code></pre>
+<h3 id="-repl-">进入交互式 REPL 喵</h3>
+<pre><code class="language-powershell">python src\JvavDK27.py
+</code></pre>
+<pre><code class="language-text">JVAV DK27 - Turing-Complete Brainwave Programming Language
+160+ Reversed Python Builtins | Full Recursion Support
+jvav&gt; def fib(n): return n if n &lt;= 1 else fib(n-1) + fib(n-2)
+jvav&gt; fib(8)
+21
+</code></pre>
+<h3 id="heading-2">自检喵</h3>
+<pre><code class="language-powershell">python src\JvavDK27.py info
+</code></pre>
+<hr />
+<h2 id="4--jvav-">4. 写一段真正的 JVAV 喵</h2>
+<pre><code class="language-jvav"># 多行条件 + for 循环 + 推导式，一次满足喵
+tnirp(&quot;=== JVAV DK27 演示 ===&quot;)
+
+number = modnartegrat(1, 10)
+
+if number &lt; 3:
+  tnirp(&quot;数字很小喵&quot;)
+elif number &lt; 7:
+  tnirp(&quot;数字中等喵&quot;)
+else:
+  tnirp(&quot;数字很大喵&quot;)
+
+numbers = tsal([1, 2, 3, 4, 5])
+doubled = tsal([x * 2 for x in numbers])
+tnirp(&quot;原列表：&quot; + rts(numbers))
+tnirp(&quot;翻倍后：&quot; + rts(doubled))
+tnirp(&quot;总和：&quot; + rts(mus(numbers)))
+</code></pre>
+<p>递归也没在怕的喵：</p>
+<pre><code class="language-jvav">def fact(n): return 1 if n &lt;= 1 else n * fact(n-1)
+tnirp(fact(5))   # 120 喵
+</code></pre>
+<hr />
+<h2 id="5-">5. 项目结构喵</h2>
+<pre><code class="language-text">jvav/
+├── index.html              # 主页喵
+├── downloads/
+│   ├── index.html          # 下载页（含最新 exe）喵
+│   ├── jvav_dk27.exe       # DK27 解释器发布产物喵
+│   ├── jvavpkg.exe         # 包管理器发布产物喵
+│   └── archive/            # 历史版本归档喵
+├── versions.html           # 版本中心（DK25 / DK26 / DK27）喵
+├── changelog.html          # 更新日志喵
+├── about.html              # 项目简介喵
+├── help.html               # 主文档 &amp; 快速上手喵
+├── help-pkg.html           # 包管理器文档喵
+├── help-cli.html           # CLI 文档喵
+├── help-protocol.html      # 协议文档喵
+├── help-security.html      # 安全沙箱文档喵
+├── assets/                 # 样式与 Logo 喵
+├── examples/               # 示例程序库喵
+├── src/
+│   ├── JvavDK27.py         # 唯一在运行的解释器源码喵
+│   ├── jvavpkg.py          # 包管理器喵
+│   ├── verify_production_status.py
+│   └── report.py
+├── tests/
+│   ├── test_repl_function.py   # 解释器自测（8 个）喵
+│   └── test_jvavpkg.py         # 包管理器自测（11 个）喵
+├── jvav_dk27.spec          # 解释器 PyInstaller 配置喵
+└── jvavpkg.spec            # 包管理器 PyInstaller 配置喵
+</code></pre>
+<blockquote>
+<p>⚠️ 喵提醒：<code>src/JvavDK25.py</code>、<code>src/JvavDK26.py</code> 是遗留版本，<strong>不要动</strong>喵。</p>
+</blockquote>
+<hr />
+<h2 id="6-">6. 插件系统喵</h2>
+<p><code>SafeEvaluator</code> 内置 <strong>7 个插件</strong>，其中 5 个默认加载喵：</p>
+<table>
+<thead>
+<tr>
+<th>插件名</th>
+<th>能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file_ops</code></td>
+<td>读 / 写 / 列目录 / 建删路径（<code>daeRelif</code>、<code>etirWelif</code>、<code>stsilD</code>…）喵</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>HTTP GET/POST、JSON 编解码喵</td>
+</tr>
+<tr>
+<td><code>datetime</code></td>
+<td>当前时间、时间戳、<code>eeps</code>（sleep）喵</td>
+</tr>
+<tr>
+<td><code>math_ext</code></td>
+<td>开方、三角、对数、阶乘、随机数喵</td>
+</tr>
+<tr>
+<td><code>console</code></td>
+<td><code>cls</code> 清屏、<code>put</code> 不换行输出喵</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>执行命令、切换路径喵</td>
+</tr>
+<tr>
+<td><code>collections</code></td>
+<td><code>retnuoC</code> / <code>euqed</code> / <code>deredroD</code> 等结构喵</td>
+</tr>
+</tbody>
+</table>
+<p>REPL 里这样用喵：</p>
+<pre><code class="language-text">jvav&gt; plugin list
+jvav&gt; plugin load file_ops
+jvav&gt; plugin unload file_ops
+</code></pre>
+<p>更有意思的是——解释器会<strong>自动发现</strong>通过 jvavpkg 安装的 <code>library</code> / <code>plugin</code> 包（在 <code>~/.jvav/packages</code> 与 <code>./.jvav/packages</code>），直接 <code>plugin load &lt;名字&gt;</code> 就能把它们的 <code>src/*.jvav</code> 函数注入环境喵。</p>
+<hr />
+<h2 id="7--jvavpkg-">7. 包管理器 jvavpkg 喵</h2>
+<p><code>jvavpkg.exe</code>（源码 <code>src/jvavpkg.py</code>）是一个<strong>基于 GitHub 仓库文件</strong>的 JVAV 包管理器喵。</p>
+<h3 id="heading-3">设计理念喵</h3>
+<ul>
+<li>一包一仓库，Git tag 即版本喵</li>
+<li>仓库文件直存，不走 Releases 喵</li>
+<li>超过 100MB 的资产走 <code>jvavpkg.links</code> 外链，<strong>强制 SHA256 校验</strong>喵</li>
+<li>支持依赖解析、版本约束、循环依赖检测、版本冲突检测喵</li>
+</ul>
+<h3 id="heading-4">命令一览喵</h3>
+<pre><code class="language-powershell">python src\jvavpkg.py info    &lt;name|owner/repo&gt; [--version &lt;tag&gt;]
+python src\jvavpkg.py install &lt;name&gt; [--version &lt;tag&gt;] [--local]
+python src\jvavpkg.py uninstall &lt;name&gt; [--local]
+python src\jvavpkg.py list    [--local]
+python src\jvavpkg.py update  [name] [--local]
+python src\jvavpkg.py pack    [src] [--name &lt;n&gt;] [--version &lt;v&gt;] [--main &lt;f&gt;] [--out &lt;p&gt;]
+</code></pre>
+<h3 id="heading-5">安装位置喵</h3>
+<table>
+<thead>
+<tr>
+<th>作用域</th>
+<th>路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全局（默认）</td>
+<td><code>~/.jvav/packages/&lt;name&gt;/</code></td>
+</tr>
+<tr>
+<td>项目本地（<code>--local</code>）</td>
+<td><code>&lt;cwd&gt;/.jvav/packages/&lt;name&gt;/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="heading-6">版本约束支持喵</h3>
+<p><code>&gt;=1.0.0</code>、<code>&lt;2.0.0</code>、<code>==1.2.3</code>、<code>&gt;=2.0.0,&lt;3.0.0</code> 这些都能写喵，最高兼容版本会被自动挑出来。</p>
+<hr />
+<h2 id="8-">8. 测试与验证喵</h2>
+<p>所有测试都是<strong>纯 assert 自测</strong>，没有 pytest 依赖喵：</p>
+<pre><code class="language-powershell">python tests\test_repl_function.py   # 8/8 通过喵
+python tests\test_jvavpkg.py         # 11/11 通过喵（离线，用假 GitHub 客户端）
+</code></pre>
+<p>当前测试总数是 <strong>19 个</strong>（解释器 8 + 包管理器 11）喵。</p>
+<p>发布前还应把示例全部跑一遍，退出码必须为 0 喵：</p>
+<pre><code class="language-powershell">Get-ChildItem examples -Filter *.jvav | % { python src\JvavDK27.py -f $_.FullName }
+</code></pre>
+<hr />
+<h2 id="9-">9. 构建发布喵</h2>
+<p>支持两种打包方式，<strong>PyInstaller 是主方式</strong>，Nuitka 是试点的优化方案喵。</p>
+<h3 id="pyinstaller">PyInstaller（主推）喵</h3>
+<pre><code class="language-powershell">python -m PyInstaller jvav_dk27.spec --clean --noconfirm
+Copy-Item dist\jvav_dk27.exe downloads\jvav_dk27.exe -Force
+(Get-FileHash downloads\jvav_dk27.exe -Algorithm SHA256).Hash
+</code></pre>
+<h3 id="nuitka">Nuitka（更小更快）喵</h3>
+<pre><code class="language-powershell">python -m nuitka --onefile --assume-yes-for-downloads `
+  --no-deployment-flag=self-execution `
+  --output-dir=nuitka_build `
+  --output-filename=jvav_dk27_nuitka.exe src\JvavDK27.py
+</code></pre>
+<p>Nuitka 版本体积约小 <strong>24%</strong>、启动约快 <strong>50%</strong> 喵；<code>--no-deployment-flag=self-execution</code> 是解释器必加的参数，否则 <code>-c</code> / <code>-f</code> 会被当成自递归拒绝喵。</p>
+<h3 id="heading-7">发布校验值喵</h3>
+<ul>
+<li>发行：JVAV DK 27 v6</li>
+<li>SHA256：<code>1D29F00D214C8A744623BCDAA83DE1FB4997601EA351427F597095E81EFDCAFD</code></li>
+<li>功能：160+ 倒序函数、完整递归、全部控制流、REPL 交互</li>
+<li>测试：8/8 解释器 · 11/11 包管理器</li>
+</ul>
+<blockquote>
+<p>⚠️ 版本号 / 日期 / SHA256 / 测试数 / 文件大小散落在 <code>README.md</code>、<code>src/verify_production_status.py</code>、<code>src/report.py</code> 和多个 HTML 页面里，发版时<strong>必须同步更新</strong>，具体清单见 <code>UPDATE_GUIDE.md</code> 喵。</p>
+</blockquote>
+<hr />
+<h2 id="10-">10. 常用入口喵</h2>
+<ul>
+<li>🌐 官方网站：https://jvav-with-u.top</li>
+<li>⬇️ 下载页：https://jvav-with-u.top/downloads/index.html</li>
+<li>📖 快速上手：https://jvav-with-u.top/help.html</li>
+<li>📦 包管理文档：https://jvav-with-u.top/help-pkg.html</li>
+<li>📝 更新日志：https://jvav-with-u.top/changelog.html</li>
+</ul>
+<hr />
+<h2 id="11-">11. 一句话总结喵</h2>
+<p>JVAV 用「倒序」这个荒诞又自洽的设定，把一个真正图灵完备、带沙箱、带插件、带包管理器的语言塞进了 <code>.jvav</code> 文件里喵。写 <code>tnirp</code> 的时候你会以为是玩笑，直到 <code>fib(8)</code> 算出 <code>21</code> 的那一刻——脑波，就接上了喵。🐾</p>
+<hr />
+<p><em>JVAV - 脑波原生编程语言 | BR inc. 2018-2026 · 喵喵喵</em></p>
 ]]></description>
     </item>
     <item>
