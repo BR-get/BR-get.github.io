@@ -229,12 +229,62 @@ img {
 }
 
 .hero-avatar {
+    display: block;
     width: 92px;
     height: 92px;
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.6);
-    margin-top: 26px;
+    margin: 26px auto 0;
     object-fit: cover;
+}
+
+.hero-memo {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-memo:hover {
+    background: rgba(255, 255, 255, 0.26);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.hero-memo-badge {
+    flex-shrink: 0;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+.hero-memo-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 1rem;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hero-memo-time {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    opacity: 0.85;
 }
 
 /* ---------- Page hero (inner pages) ---------- */
@@ -1468,5 +1518,16 @@ img {
 
     .post-card-title {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-memo {
+        border-radius: 16px;
+        padding: 12px 16px;
+    }
+
+    .hero-memo-text {
+        white-space: normal;
     }
 }
