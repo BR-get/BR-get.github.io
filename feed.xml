@@ -31,14 +31,6 @@
 ]]></description>
     </item>
     <item>
-      <title>无聊怎么办</title>
-      <link>https://blog.shundebo.top/post/wu-liao-zen-me-ban/</link>
-      <guid isPermaLink="true">https://blog.shundebo.top/post/wu-liao-zen-me-ban/</guid>
-      <pubDate>Thu, 09 Jul 2026 00:07:24 +0800</pubDate>
-      <description><![CDATA[<p>哭哭喵</p>
-]]></description>
-    </item>
-    <item>
       <title>JVAV 编程语言介绍 🐣</title>
       <link>https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/</link>
       <guid isPermaLink="true">https://blog.shundebo.top/post/jvav-bian-cheng-yu-yan-jie-shao/</guid>
@@ -389,6 +381,7 @@ Copy-Item dist\jvav_dk27.exe downloads\jvav_dk27.exe -Force
 <hr />
 <p><em>JVAV - 脑波原生编程语言 | BR inc. 2018-2026 · 喵喵喵</em></p>
 ]]></description>
+      <category>芝士什么</category>
     </item>
     <item>
       <title>AGP V2025.10</title>
